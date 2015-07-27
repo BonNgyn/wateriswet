@@ -1,3 +1,5 @@
+
+
 (function(GRASP, $){
 
 
@@ -49,6 +51,7 @@ $(document).ready(function(){
         GRID_COLS,
         A,C;
 
+<<<<<<< HEAD
     var currentKey;
     var TimerWalk;
     var charStep= 2;
@@ -104,6 +107,11 @@ $(document).ready(function(){
         }
 
         switch(dir) {
+=======
+    GRASP.config = {
+        gridContainer: "grid",
+    };
+>>>>>>> 0b449814ccc5b5b48be01f043d332b3f4735be08
 
 
         }
