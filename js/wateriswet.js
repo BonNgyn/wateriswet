@@ -45,7 +45,22 @@
 
 
     function processWalk(dir) {
-        
+        charStep++
+        if(charStep == 5) charStep == 1;
+
+        $('#bloo').removeAttr('class');
+
+        switch(charStep) {
+            case 1: $('bloo').addClass(dir+'-stand'); break;
+            case 2: $('bloo').addClass(dir+'-right'); break;
+            case 3: $('bloo').addClass(dir+'-stand'); break;
+            case 4: $('bloo').addClass(dir+'-left'); break;
+        }
+
+        switch(dir) {
+            
+
+        }
 
     }
 
