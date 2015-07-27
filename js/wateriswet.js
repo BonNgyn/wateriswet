@@ -5,8 +5,6 @@
 
     GRASP.config = {
         gridContainer: "grid",
-        matrixContainer: "matrix",
-        matrixHeader: "matrixHeader"
     };
 
     GRASP.start = function(){
@@ -35,9 +33,7 @@
                     .width(36).height(36)
                     .data("row", i).data("col", j)
                     .appendTo("#"+GRASP.config.gridContainer)
-                    .on("click", cellClick)
-                    .on("mouseenter", {isMatrix: false}, cellMouseEnter)
-                    .on("mouseleave", cellMouseLeave);
+
 
 
             }
@@ -54,26 +50,6 @@
         MATRIX_ELEMENT.html("");
 
         MATRIXHEADER_ELEMENT.css("top", parseInt(GRID_ELEMENT.offset().top + (GRID_ROWS * 36)) + "px");
-
-        var cellSize = Math.ceil((GRID_ROWS * 36) / MATRIX_ROWS);
-        var coord;
-
-        for (var i=1;i<=MATRIX_ROWS;i++){
-            for (var j=1;j<=MATRIX_COLS;j++){
-                coord = "" + i + "," + j;
-                $(document.createElement("div"))
-                    .addClass("autocorrMatrixCellWrapper")
-                    .attr("alt", coord)
-                    .css("left", parseInt((j-1) * cellSize, 10) + "px")
-                    .css("top", parseInt((i-1) * cellSize, 10) + "px")
-                    .data("row", i).data("col", j)
-                    .appendTo("#"+GRASP.config.matrixContainer)
-                    .on("mouseenter", {isMatrix: true}, cellMouseEnter)
-                    .on("mouseleave", cellMouseLeave);
-
-
-            }
-        }
 
         MATRIX_ELEMENT.height(36 * GRID_ROWS);
         MATRIX_ELEMENT.width(36 * GRID_COLS);
