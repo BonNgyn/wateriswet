@@ -15,6 +15,9 @@ handlers:
 - url: /js
   static_dir: js
 
+- url: /resources
+  static_dir: resources
+
 - url: .*
   script: main.app
 
@@ -22,4 +25,4 @@ libraries:
 - name: webapp2
   version: "2.5.2"
 - name: jinja2
-  version: latest  
+  version: latest
