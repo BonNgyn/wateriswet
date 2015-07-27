@@ -1,7 +1,5 @@
 (function(GRASP, $){
-    var GRID_ROWS,
-        GRID_COLS,
-        A,C;
+
 
     GRASP.config = {
         gridContainer: "grid",
@@ -46,4 +44,71 @@
 
 $(document).ready(function(){
     GRASP.start();
+
+    var GRID_ROWS,
+        GRID_COLS,
+        A,C;
+
+    var currentKey;
+    var TimerWalk;
+    var charStep= 2;
+    var charSpeed= 400;
+
+    $(document).keydown(function(e) {
+        if(!currentKey) {
+
+            currentKey = e.keyCode;
+
+            switch(e.keyCode) {
+                case 38: charWalk('up'); break;
+                case 39: charWalk('right'); break;
+                case 40; charWalk('down'); break;
+                case 37: charWalk('left'); break;
+            }
+        }
+    })
+
+    $(document).keyup(function(e) {
+        if(e.keyCode == currentKey) {
+
+            currentKey = false;
+            clearInterval(TimerWalk);
+            $('#bloo').stop(true, true);
+        }
+    })
+
+
+
+    function charWalk(dir) {
+        if (dir == 'up') dir == 'back';
+        if (dir == 'down') dir == 'front';
+
+        processWalk(dir);
+
+        TimerWalk = setInterval(funciton() {processWalk(dir);}, charSpeed);
+        }
+    }
+
+
+    function processWalk(dir) {
+        charStep++
+        if(charStep == 5) charStep == 1;
+
+        $('#bloo').removeAttr('class');
+
+        switch(charStep) {
+            case 1: $('bloo').addClass(dir+'-stand'); break;
+            case 2: $('bloo').addClass(dir+'-right'); break;
+            case 3: $('bloo').addClass(dir+'-stand'); break;
+            case 4: $('bloo').addClass(dir+'-left'); break;
+        }
+
+        switch(dir) {
+
+
+        }
+
+    }
+
+
 });

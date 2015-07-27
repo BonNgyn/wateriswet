@@ -1,3 +1,13 @@
+#bloo {
+    position: absolute;
+    top: 36px;
+    left: 36px;
+    width: 36px;
+    height: 36px;
+    background: url(https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png) no-repeat;
+}
+
+
 .gridContainer {
 /*  width: inherit; */
 /*  float: left; */
@@ -50,6 +60,9 @@
     border-width: 1px;
     border-color: black;
     font-size: normal;
+<<<<<<< HEAD
+}
+=======
 }
 
 .body {
@@ -89,3 +102,4 @@ h1{
   justify-content: space-around;
   flex: 1;
 }
+>>>>>>> e75f763f224d430df57742ee1f71a57278b3f1c5
