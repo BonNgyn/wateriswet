@@ -8,8 +8,8 @@
     };
 
     GRASP.start = function(){
-        GRID_ROWS = $("#rows").val();
-        GRID_COLS = $("#cols").val();
+        GRID_ROWS = 10;
+        GRID_COLS = 10;
         createGrid();
     };
 

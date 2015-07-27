@@ -40,19 +40,6 @@
 
 
 
-.autocorrMatrixCellWrapper {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    background: none;
-    z-index: 2;
-    border-style: solid outset;
-    border-width: 1px;
-    border-color: black;
-    font-size: x-small;
-}
-
-
 .cellWrapper {
     width: 36px;
     height: 36px;
