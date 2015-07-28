@@ -35,13 +35,11 @@ window.onload = function()
 
 
 
-  };
-
-
 
 var steps;
 steps = 20;
 $( "#scorenum" ).text(steps);
+
 var currentKey;          //records the current key pressed
 var TimerWalk;          //timer handle
 var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
