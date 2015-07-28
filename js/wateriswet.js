@@ -1,3 +1,23 @@
+window.onload = function()
+{
+    var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+
+    canvas.width = 500;
+    canvas.height = 500;
+
+    var body = document.getElementsByTagName('body')[0];
+    body.appendChild(canvas);
+
+    ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
+    ctx.strokeStyle = 'black'; // The border will also be black
+
+    // The border is drawn on the outside of the rectangle, so we'll
+    // need to move it a bit to the right and up. Also, we'll need
+    // to leave a 20 pixels space on the top to draw the interface.
+    ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
+};
+
 var currentKey;          //records the current key pressed
 var TimerWalk;          //timer handle
 var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
