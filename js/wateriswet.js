@@ -37,7 +37,6 @@ window.onload = function()
 
 
 
-
 var currentKey;          //records the current key pressed
 var TimerWalk;          //timer handle
 var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
@@ -142,4 +141,15 @@ $(document).ready(function() {
            break;
          }
 
-     }
+       }
+
+//        supplies()
+//
+//        function supplies(){
+//          var images = [],
+//          index = 0;
+//          images[0] = "<img src='http://www.bodenimages.com/productimages/sw/15GAUT_33375_YEL_s.jpg'></a>";
+//          index = Math.floor(Math.random() * images.length);
+//          document.write(images[index]);
+//
+// }
