@@ -14,6 +14,9 @@ window.onload = function()
     x = 0;
     y = 0;
 
+    randyellowx = Math.floor((Math.random() * canvas.width - 100) + 1);
+    randyellowy = Math.floor((Math.random() * canvas.height - 100) + 1);
+
     // var body = document.getElementsByTagName('body')[0];
     // body.appendChild(canvas);
 
@@ -25,6 +28,47 @@ window.onload = function()
     yellow_supplies();
     blue_bloo();
     
+    var steps;
+    steps = 20;
+    $( "#scorenum" ).text(steps);
+
+    var currentKey;          //records the current key pressed
+    var TimerWalk;          //timer handle
+    var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
+    var charSpeed = 400;
+    $(document).ready(function() {
+
+     //add character state class
+     $('#bloo').addClass('front-stand');
+
+     });
+
+
+
+    $(document).keydown(function(e) {
+
+      steps = steps -1;
+      $( "#scorenum" ).text(steps);
+      if (!currentKey) {
+
+       //set the currentKey to the key that is down
+       currentKey = e.keyCode;
+
+       //execute character movement function charWalk('direction')
+        switch(e.keyCode) {
+         case 38: charWalk('up');    break;
+         case 39: charWalk('right'); break;
+         case 40: charWalk('down');  break;
+         case 37: charWalk('left');  break;
+       }
+     }
+
+     console.log(steps);
+     if (steps <0){
+       console.log('gameover');
+       window.location.href = "/end";
+     }
+    });
 
 
 
@@ -37,14 +81,10 @@ window.onload = function()
     }
 
     function yellow_supplies() {
-        randx = Math.floor((Math.random() * canvas.width - 100) + 1);
-        randy = Math.floor((Math.random() * canvas.height - 100) + 1);
-        dx2 = randx;
-        dy2 = randy;
         yellow_image = new Image();
         yellow_image.src = 'http://www.bodenimages.com/productimages/sw/15GAUT_33375_YEL_s.jpg';
         yellow_image.onload = function() {
-            ctx.drawImage(yellow_image, dy2,dx2)
+            ctx.drawImage(yellow_image, randyellowy, randyellowx)
         }
     }
 
@@ -53,6 +93,7 @@ window.onload = function()
             if(e.keyCode == 40) /*down*/{
                 clearCanvas();
                 drawMain();
+                yellow_supplies();
                 x = x + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
@@ -61,6 +102,7 @@ window.onload = function()
             if(e.keyCode == 37) /*left*/{
                 clearCanvas();
                 drawMain();
+                yellow_supplies();
                 y = y - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
@@ -69,6 +111,7 @@ window.onload = function()
             if(e.keyCode == 39) /*right*/{
                 clearCanvas();
                 drawMain();
+                yellow_supplies();
                 y = y + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
@@ -77,6 +120,7 @@ window.onload = function()
             if(e.keyCode == 38) /*up*/{
                 clearCanvas();
                 drawMain();
+                yellow_supplies();
                 x = x - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
