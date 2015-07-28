@@ -31,6 +31,7 @@ window.onload = function()
             ctx.font = '30px sans-serif';
             // ctx.fillText('Steps: ' + steps, 2, 30);
         }
+}
 
 
 
@@ -72,7 +73,7 @@ $(document).keydown(function(e) {
  }
 
  console.log(steps);
- if (steps <0){
+ if (steps <= 0){
    console.log('gameover');
    window.location.href = "/end";
  }
