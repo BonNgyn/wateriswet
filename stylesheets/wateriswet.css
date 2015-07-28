@@ -1,4 +1,5 @@
 #bloo {
+
     position: absolute;
     top: ;
     left: 36px;
@@ -103,4 +104,3 @@ h1{
   display: flex;
   justify-content: space-around;
   flex: 1;
-}
