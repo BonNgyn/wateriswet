@@ -13,66 +13,7 @@
 }
 
 
-.gridContainer {
-/*  width: inherit; */
-/*  float: left; */
-    position: relative;
-    top: 10px;
-    padding: 0 0 0 0;
-    display: block;
-    background: none;
-    font-family: Arial, Helvetica, Verdana, sans-serif;
-}
 
-.cell {
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    z-index: 0;
-
-/*
-    font-size: 16pt;
-*/
-    font-size: x-large;
-    font-weight: normal;
-    font-style: normal;
-    color: #888888;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    line-height: 2em;
-/*  padding-top: 0.25em; */
-}
-
-
-.cellCoordinates {
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    background: none;
-    z-index: 1;
-}
-
-
-
-.cellWrapper {
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    background: none;
-    z-index: 2;
-    border-style: solid outset;
-    border-width: 1px;
-    border-color: black;
-    font-size: normal;
-}
-}
-
-.body {
-  display: flex;
-  text-align: center;
-  align-items: center;
-}
 
 h1{
   text-align: center;

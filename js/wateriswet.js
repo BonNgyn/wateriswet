@@ -1,59 +1,9 @@
-
-(function(GRASP, $){
-    var GRID_ROWS,
-        GRID_COLS,
-        A,C;
-
-
-    GRASP.config = {
-        gridContainer: "grid",
-    };
-
-    GRASP.start = function(){
-        GRID_ROWS = 10;
-        GRID_COLS = 10;
-        createGrid();
-    };
-
-    function createGrid()
-    {
-        GRID_ELEMENT = $("#"+GRASP.config.gridContainer);
-        GRID_ELEMENT.html(""); // Clear Grid ;)
-        var coord;
-        var cell; // Contains the 1 or 0 based upon the cell selection
-
-        for(var i=1; i<=GRID_ROWS; i++){
-            for(var j=1; j<=GRID_COLS; j++){
-                coord = "" + i + "," + j;
-
-                $(document.createElement("div"))
-                    .addClass("cellWrapper")
-                    .attr("alt", coord)
-                    .css("left", parseInt((j-1) * 36, 10) + "px")
-                    .css("top", parseInt((i-1) * 36, 10) + "px")
-                    .width(36).height(36)
-                    .data("row", i).data("col", j)
-                    .appendTo("#"+GRASP.config.gridContainer)
-            }
-        }
-
-        GRID_ELEMENT.height(36 * GRID_ROWS);
-        GRID_ELEMENT.width(36 * GRID_COLS);
-
-    }
-
-}(window.GRASP = window.GRASP || {}, jQuery));
-
-
-
-$(document).ready(function(){
-    GRASP.start();
-});
-=======
 window.onload = function()
-{
+  {
     var canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
+
+    steps = 20
 
     canvas.width = 500;
     canvas.height = 500;
@@ -67,8 +17,26 @@ window.onload = function()
     // The border is drawn on the outside of the rectangle, so we'll
     // need to move it a bit to the right and up. Also, we'll need
     // to leave a 20 pixels space on the top to draw the interface.
-    ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
-};
+    drawMain()
+
+    function drawMain()
+        {
+            ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
+            ctx.strokeStyle = 'black'; // The border will also be black
+
+            // The border is drawn on the outside of the rectangle, so we'll
+            // need to move it a bit to the right and up. Also, we'll need
+            // to leave a 20 pixels space on the top to draw the interface.
+            ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
+
+            ctx.font = '12px sans-serif';
+            ctx.fillText('Steps: ' + steps, 2, 12);
+        }
+
+  };
+
+
+
 
 var currentKey;          //records the current key pressed
 var TimerWalk;          //timer handle
