@@ -1,4 +1,4 @@
-#bloo {
+/*#bloo {
 
     position: absolute;
     top: ;
@@ -6,16 +6,16 @@
     width: 36px;
     height: 36px;
     background: url(https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png) no-repeat;
-}
+}*/
 
 .gameCenter{
   position: relative;
+  margin: auto;
+  text-align: center;
+
 }
 
-
-
-
-h1{
+h1, h2{
   text-align: center;
 }
 
