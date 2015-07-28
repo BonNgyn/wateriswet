@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 /*main html css*/
 
 #bloo {
+=======
+/*#bloo {
+>>>>>>> 3c58bb3fd5a0af71e313cad5224dde957ce4b537
 
     position: absolute;
     top: ;
@@ -8,7 +12,7 @@
     width: 36px;
     height: 36px;
     background: url(https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png) no-repeat;
-}
+}*/
 
 #supplies{
   position: absolute;
@@ -20,6 +24,7 @@
 }
 
 
+
 a:link {
     text-decoration: none;
   }
@@ -29,7 +34,6 @@ a:visited {
     text-decoration: none;
     color: black;
 }
-
 
 body{
   text-align: center;
