@@ -78,32 +78,49 @@ window.onload = function()
             // The border is drawn on the outside of the rectangle, so we'll
             // need to move it a bit to the right and up. Also, we'll need
             // to leave a 20 pixels space on the top to draw the interface.
+
             ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
         }    
+            ctx.strokeRect(2, 40, canvas.width - 4, canvas.height - 40);
+            ctx.font = '30px sans-serif';
+            // ctx.fillText('Steps: ' + steps, 2, 30);
+        }
 
-  };
+var steps;
+steps = 20;
+$( "#scorenum" ).text(steps);
 
+var currentKey;          //records the current key pressed
+var TimerWalk;          //timer handle
+var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
+var charSpeed = 400;
+$(document).ready(function() {
 
+$(document).keydown(function(e) {
 
+  steps = steps -1;
+  $( "#scorenum" ).text(steps);
+  if (!currentKey) {
 
+   //set the currentKey to the key that is down
+   currentKey = e.keyCode;
 
+   //execute character movement function charWalk('direction')
+    switch(e.keyCode) {
+     case 38: charWalk('up');    break;
+     case 39: charWalk('right'); break;
+     case 40: charWalk('down');  break;
+     case 37: charWalk('left');  break;
+   }
+ }
 
+ console.log(steps);
+ if (steps <0){
+   console.log('gameover');
+   window.location.href = "/end";
+ }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+});
 
 
 
