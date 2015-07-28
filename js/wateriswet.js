@@ -1,49 +1,105 @@
+var currentKey;          //records the current key pressed
+var TimerWalk;          //timer handle
+var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
+var charSpeed = 400;
+$(document).ready(function() {
 
+ //add character state class
+ $('#bloo').addClass('front-stand');
 
-(function(GRASP, $){
-    var GRID_ROWS,
-        GRID_COLS,
-        A,C;
+ });
 
-    GRASP.config = {
-        gridContainer: "grid",
-    };
+ $(document).keydown(function(e) {
+     if (!currentKey) {
 
-    GRASP.start = function(){
-        GRID_ROWS = 10;
-        GRID_COLS = 10;
-        createGrid();
-    };
+       //set the currentKey to the key that is down
+       currentKey = e.keyCode;
 
-    function createGrid()
-    {
-        GRID_ELEMENT = $("#"+GRASP.config.gridContainer);
-        GRID_ELEMENT.html(""); // Clear Grid ;)
-        var coord;
-        var cell; // Contains the 1 or 0 based upon the cell selection
+       //execute character movement function charWalk('direction')
+       switch(e.keyCode) {
+         case 38: charWalk('up');    break;
+         case 39: charWalk('right'); break;
+         case 40: charWalk('down');  break;
+         case 37: charWalk('left');  break;
+       }
 
-        for(var i=1; i<=GRID_ROWS; i++){
-            for(var j=1; j<=GRID_COLS; j++){
-                coord = "" + i + "," + j;
+     }
 
-                $(document.createElement("div"))
-                    .addClass("cellWrapper")
-                    .attr("alt", coord)
-                    .css("left", parseInt((j-1) * 36, 10) + "px")
-                    .css("top", parseInt((i-1) * 36, 10) + "px")
-                    .width(36).height(36)
-                    .data("row", i).data("col", j)
-                    .appendTo("#"+GRASP.config.gridContainer)
-            }
-        }
+   });
 
-        GRID_ELEMENT.height(36 * GRID_ROWS);
-        GRID_ELEMENT.width(36 * GRID_COLS);
+   //KeyUp Function
+   $(document).keyup(function(e) {
 
-    }
+     //don't stop the walk if the player is pushing other buttons
+     //only stop the walk if the key that started the walk is released
+     if (e.keyCode == currentKey) {
 
-}(window.GRASP = window.GRASP || {}, jQuery));
+       //set the currentKey to false, this will enable a new key to be pressed
+       currentKey = false;
 
-$(document).ready(function(){
-    GRASP.start();
-});
+       //clear the walk timer
+       clearInterval(TimerWalk);
+
+       //finish the character's movement
+       $('#bloo').stop(true, true);
+
+     }
+
+   });
+   function charWalk(dir) {
+
+       //adjust from lang to code
+       if (dir == 'up') dir = 'back';
+       if (dir == 'down') dir = 'front';
+
+       //move the character
+       processWalk(dir);
+
+       //set the interval timer to continually move the character
+       TimerWalk = setInterval(function() { processWalk(dir); }, charSpeed);
+
+     }
+
+     //Process Character Walk Function
+     function processWalk(dir) {
+
+       //increment the charStep as we will want to use the next stance in the animation
+      //if the character is at the end of the animation, go back to the beginning
+       charStep++;
+       if (charStep == 5) charStep = 1;
+
+       //remove the current class
+       $('#bloo').removeAttr('class');
+
+       //add the new class
+       switch(charStep) {
+         case 1: $('#bloo').addClass(dir+'-stand'); break;
+         case 2: $('#bloo').addClass(dir+'-right'); break;
+         case 3: $('#bloo').addClass(dir+'-stand'); break;
+         case 4: $('#bloo').addClass(dir+'-left');  break;
+       }
+
+       //move the char
+       //we will only want to move the character 32px (which is 1 unit) in any direction
+       switch(dir) {
+         case'front':
+           $('#bloo').animate({top: '+=32'}, charSpeed);
+           break;
+         case'back':
+           //don't let the character move any further up if they are already at the top of the screen
+           if ($('#bloo').position().top > 0) {
+             $('#bloo').animate({top: '-=32'}, charSpeed);
+           }
+           break;
+         case'left':
+         //don't let the character move any further left if they are already at the left side of the screen
+         if ($('#bloo').position().left > 0) {
+             $('#bloo').animate({left: '-=32'}, charSpeed);
+           }
+           break;
+         case'right':
+           $('#bloo').animate({left: '+=32'}, charSpeed);
+           break;
+         }
+
+     }
