@@ -3,6 +3,7 @@ window.onload = function()
     var canvas = document.getElementById('canvas');
     document.addEventListener('keydown', doKeyDown, true);
     var ctx = canvas.getContext('2d');
+    var bloo_image;
 
     ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
     ctx.strokeStyle = 'black'; // The border will also be black
@@ -17,8 +18,8 @@ window.onload = function()
     var randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
 
 
-    var randredx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
-    var randredy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
+    var randredx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+    var randredy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
 
     // The border is drawn on the outside of the rectangle, so we'll
     // need to move it a bit to the right and up. Also, we'll need
@@ -52,11 +53,12 @@ window.onload = function()
       steps = steps -1;
       $( "#scorenum" ).text(steps);
 
-     // console.log(steps); 
-     if (steps <0){
-       console.log('gameover');
-       window.location.href = "/end";
-        }
+
+    console.log(steps);
+    if (steps <= 0){
+        console.log('gameover');
+        window.location.href = "/end";
+    }
     blue_yellow_collision();
     });
 
@@ -104,7 +106,6 @@ window.onload = function()
           if( ((dy +y ) <randyellowy) && (randyellowy< (dy + y + 40)) ){
           console.log("collided");
           steps = steps + 10;
-
         }
       }
       if ( (randyellowx < (dx + x) )&& (dx < (randyellowx + y +40) )){
@@ -115,8 +116,7 @@ window.onload = function()
       }
     }
 
-
-    //Function for Bloo to move
+//Function for Bloo to move
     function doKeyDown(e) {
         if((dx+x)<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
@@ -124,6 +124,7 @@ window.onload = function()
                 blue_bloo();
                 x = x + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
+
             }
         }
         if((dy+y)>(0)){
@@ -156,7 +157,11 @@ window.onload = function()
         red_triangle();
       }
 
-    //the canvas clears
+
+
+
+
+//the canvas clears
     function clearCanvas() {
         canvas.width = canvas.width;
     }
