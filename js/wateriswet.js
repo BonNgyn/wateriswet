@@ -100,20 +100,25 @@ window.onload = function()
     }
 
     function blue_yellow_collision(){
-      console.log("blue coords:" + dx + x + "," + dy +y);
-      console.log("yellow coods: " + randyellowx + "," +randyellowy);
-      if ( ((dx + x )< randyellowx) && (randyellowx < (dx + x + 40) ) ) {
-          if( ((dy +y ) <randyellowy) && (randyellowy< (dy + y + 40)) ){
-          console.log("collided");
-          steps = steps + 10;
+
+    console.log("blue coords:" + dx + x + "," + dy +y);
+    console.log("yellow coods: " + randyellowx + "," +randyellowy);
+        if ( ((dx + x )< randyellowx) && (randyellowx < (dx + x + 40) ) ) {
+            if( ((dy +y ) <randyellowy) && (randyellowy< (dy + y + 40)) ){
+                console.log("collided");
+                steps = steps + 10;
+                randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+                randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+            }
         }
-      }
-      if ( (randyellowx < (dx + x) )&& (dx < (randyellowx + y +40) )){
-        if ((randyellowy < (dy+ y)) &&  (dy < (randyellowy + y +40))){
-          console.log("collideded");
-          steps = steps + 10;
+        if ( (randyellowx < (dx + x) )&& (dx < (randyellowx + y +40) )){
+            if ((randyellowy < (dy+ y)) &&  (dy < (randyellowy + y +40))){
+                console.log("collideded");
+                steps = steps + 10;
+                randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+                randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+            }
         }
-      }
     }
 
 //Function for Bloo to move
@@ -161,7 +166,7 @@ window.onload = function()
 
 
 
-//the canvas clears
+    //the canvas clears
     function clearCanvas() {
         canvas.width = canvas.width;
     }
