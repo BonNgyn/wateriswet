@@ -26,19 +26,8 @@ window.onload = function()
 
     randredx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
     randredy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
-// =======
-//     var randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
-//     var randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
-//
-//
-//     var randredx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
-//     var randredy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
-// >>>>>>> 0453f67c7dfd8aad1e0f3a9fd41ff080febf06d4
 
-    // The border is drawn on the outside of the rectangle, so we'll
-    // need to move it a bit to the right and up. Also, we'll need
-    // to leave a 20 pixels space on the top to draw the interface.
-
+    
     drawMain();
     blue_bloo();
     yellow_supplies();
@@ -49,6 +38,9 @@ window.onload = function()
     steps = 100;
     $( "#scorenum" ).text(steps);
 
+    var collected;
+    collected = 0;
+    $("#collectednum").text(collected);
 
     var currentKey;          //records the current key pressed
     var TimerWalk;          //timer handle
@@ -66,6 +58,7 @@ window.onload = function()
 
       steps = steps -1;
       $( "#scorenum" ).text(steps);
+      $("#collectednum").text (collected);
 
 
      console.log(steps);
@@ -79,11 +72,7 @@ window.onload = function()
 
     });
 
-    //functions or the 3 characters
-    var currentKey;          //records the current key pressed
-    var TimerWalk;          //timer handle
-    var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
-    var charSpeed = 400;
+
     $(document).ready(function() {
 
      //add character state class
@@ -116,42 +105,50 @@ window.onload = function()
     }
 
 
-// checks if blue and yellow collide
+// checks if blue and red collide
 
 
 
     function blue_red_collision(){
       console.log("blue coords:" + dx + x + "," + dy + y);
       console.log("red coords: " + randredx + "," +randredy);
-      if ( ((dx + x )< randredx) && (randredx < (dx + x + 40) ) ) {
-          if( ((dy +y ) <randredy) && (randredy< (dy + y + 40)) ){
+      if ( ((dx + x - 16)< randredx) && (randredx < (dx + x + 16) ) ) {
+          if( ((dy +y - 16 ) <randredy) && (randredy< (dy + y + 16)) ){
+
           window.location.href = "/end";
+          $("#collectednum").text (collected);
 
         }
       }
-      if ( (randredx < (dx + x) )&& (dx < (randredx + y +40) )){
-        if ((randredy < (dy+ y)) &&  (dy < (randredy + y +40))){
+      if ( (randredx < (dx + x -16) )&& (dx < (randredx + y +40) )){
+        if ((randredy < (dy+ y )) &&  (dy < (randredy + y +40))){
+
           window.location.href = "/end";
+          $("#collectednum").text (collected);
         }
       }
     }
+
+    //checks if blue and yellow collide
 
     function blue_yellow_collision(){
 
     console.log("blue coords:" + dx + x + "," + dy +y);
     console.log("yellow coods: " + randyellowx + "," +randyellowy);
-        if ( ((dx + x )< randyellowx) && (randyellowx < (dx + x + 40) ) ) {
-            if( ((dy +y ) <randyellowy) && (randyellowy< (dy + y + 40)) ){
+        if ( ((dx + x - 16)< randyellowx) && (randyellowx < (dx + x + 16) ) ) {
+            if( ((dy +y - 16) <randyellowy) && (randyellowy< (dy + y + 16)) ){
                 console.log("collided");
-                steps = steps + 10;
+                steps = steps + 20;
+                collected = collected + 1;
                 randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
                 randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
             }
         }
-        if ( (randyellowx < (dx + x) )&& (dx < (randyellowx + y +40) )){
-            if ((randyellowy < (dy+ y)) &&  (dy < (randyellowy + y +40))){
+        if ( (randyellowx < (dx + x - 16) )&& (dx < (randyellowx + y + 16) )){
+            if ((randyellowy < (dy+ y -16)) &&  (dy < (randyellowy + y + 16))){
                 console.log("collideded");
-                steps = steps + 10;
+                steps = steps + 20;
+                collected = collected + 1;
                 randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
                 randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
             }

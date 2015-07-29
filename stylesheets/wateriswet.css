@@ -106,13 +106,18 @@ a:visited {
 }
 
   /*game.html page css*/
-  .gameCenter{
-    margin: auto;
+
+  .gamePage{
+    min-width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
   }
 
-
-  .score {
-    margin: auto;
+  .gameHeader{
+    font-size: 40px;
+    font-weight: normal;
   }
 
   /*end.html page css*/
@@ -121,20 +126,23 @@ a:visited {
    display: flex;
    flex-wrap: wrap;
    align-items: center;
+   min-width: 100%;
 
 
  }
 
   .gameOverMessage{
     text-align: center;
-    width: 100%;
+    min-width: 100%;
+    margin-top: 200px;
+    margin-bottom: 200px;
   }
 
   .bottomMessages{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 100%;
+    min-width: 100%;
 
   }
 
