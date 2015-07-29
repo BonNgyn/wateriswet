@@ -41,109 +41,109 @@ window.onload = function()
      //add character state class
      $('#bloo').addClass('front-stand');
 
-     });
+ });
 
 
 
-    $(document).keydown(function(e) {
+$(document).keydown(function(e) {
 
-      steps = steps -1;
-      $( "#scorenum" ).text(steps);
-      if (!currentKey) {
+  steps = steps -1;
+  $( "#scorenum" ).text(steps);
+  if (!currentKey) {
 
-       //set the currentKey to the key that is down
-       currentKey = e.keyCode;
+   //set the currentKey to the key that is down
+   currentKey = e.keyCode;
 
-       //execute character movement function charWalk('direction')
-        switch(e.keyCode) {
-         case 38: charWalk('up');    break;
-         case 39: charWalk('right'); break;
-         case 40: charWalk('down');  break;
-         case 37: charWalk('left');  break;
-       }
-     }
+   //execute character movement function charWalk('direction')
+    switch(e.keyCode) {
+     case 38: charWalk('up');    break;
+     case 39: charWalk('right'); break;
+     case 40: charWalk('down');  break;
+     case 37: charWalk('left');  break;
+   }
+ }
 
-     console.log(steps);
-     if (steps <0){
-       console.log('gameover');
-       window.location.href = "/end";
-     }
-    });
+ console.log(steps);
+ if (steps <0){
+   console.log('gameover');
+   window.location.href = "/end";
+ }
+});
 
 
 
-    function blue_bloo() {
-        bloo_image = new Image();
-        bloo_image.src = 'https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png';
-        bloo_image.onload = function() {
+function blue_bloo() {
+    bloo_image = new Image();
+    bloo_image.src = 'https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png';
+    bloo_image.onload = function() {
+        ctx.drawImage(bloo_image, dy+y,dx+x)
+    }
+}
+
+function yellow_supplies() {
+    yellow_image = new Image();
+    yellow_image.src = 'http://www.bodenimages.com/productimages/sw/15GAUT_33375_YEL_s.jpg';
+    yellow_image.onload = function() {
+        ctx.drawImage(yellow_image, randyellowy, randyellowx)
+    }
+}
+
+function doKeyDown(e) {
+    if((dx+x)<(canvas.height-40)){
+        if(e.keyCode == 40) /*down*/{
+            clearCanvas();
+            drawMain();
+            yellow_supplies();
+            x = x + 10;
+            ctx.drawImage(bloo_image, dy+y,dx+x)
+        }
+    }
+    if((dy+y)>(0)){
+        if(e.keyCode == 37) /*left*/{
+            clearCanvas();
+            drawMain();
+            yellow_supplies();
+            y = y - 10;
+            ctx.drawImage(bloo_image, dy+y,dx+x)
+        }
+    }
+    if((dy+y)<(canvas.width-40)){
+        if(e.keyCode == 39) /*right*/{
+            clearCanvas();
+            drawMain();
+            yellow_supplies();
+            y = y + 10;
+            ctx.drawImage(bloo_image, dy+y,dx+x)
+        }
+    }
+    if((dx+x)>(20)){
+        if(e.keyCode == 38) /*up*/{
+            clearCanvas();
+            drawMain();
+            yellow_supplies();
+            x = x - 10;
             ctx.drawImage(bloo_image, dy+y,dx+x)
         }
     }
 
-    function yellow_supplies() {
-        yellow_image = new Image();
-        yellow_image.src = 'http://www.bodenimages.com/productimages/sw/15GAUT_33375_YEL_s.jpg';
-        yellow_image.onload = function() {
-            ctx.drawImage(yellow_image, randyellowy, randyellowx)
-        }
-    }
+}
 
-    function doKeyDown(e) {
-        if((dx+x)<(canvas.height-40)){
-            if(e.keyCode == 40) /*down*/{
-                clearCanvas();
-                drawMain();
-                yellow_supplies();
-                x = x + 10;
-                ctx.drawImage(bloo_image, dy+y,dx+x)
-            }
-        }
-        if((dy+y)>(0)){
-            if(e.keyCode == 37) /*left*/{
-                clearCanvas();
-                drawMain();
-                yellow_supplies();
-                y = y - 10;
-                ctx.drawImage(bloo_image, dy+y,dx+x)
-            }
-        }
-        if((dy+y)<(canvas.width-40)){
-            if(e.keyCode == 39) /*right*/{
-                clearCanvas();
-                drawMain();
-                yellow_supplies();
-                y = y + 10;
-                ctx.drawImage(bloo_image, dy+y,dx+x)
-            }
-        }
-        if((dx+x)>(20)){
-            if(e.keyCode == 38) /*up*/{
-                clearCanvas();
-                drawMain();
-                yellow_supplies();
-                x = x - 10;
-                ctx.drawImage(bloo_image, dy+y,dx+x)
-            }
-        }
-
-    }
-
-    function clearCanvas() {
-        canvas.width = canvas.width;
-    }
+function clearCanvas() {
+    canvas.width = canvas.width;
+}
 
 
-    function drawMain()
-        {
-            ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
-            ctx.strokeStyle = 'black'; // The border will also be black
+function drawMain()
+  {
+      ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
+      ctx.strokeStyle = 'black'; // The border will also be black
 
-            // The border is drawn on the outside of the rectangle, so we'll
-            // need to move it a bit to the right and up. Also, we'll need
-            // to leave a 20 pixels space on the top to draw the interface.
+      // The border is drawn on the outside of the rectangle, so we'll
+      // need to move it a bit to the right and up. Also, we'll need
+      // to leave a 20 pixels space on the top to draw the interface.
 
-            ctx.strokeRect(2, 40, canvas.width - 4, canvas.height - 40);
-            ctx.font = '30px sans-serif';
-            // ctx.fillText('Steps: ' + steps, 2, 30);
-        }
+      ctx.strokeRect(2, 40, canvas.width - 4, canvas.height - 40);
+      ctx.font = '30px sans-serif';
+      // ctx.fillText('Steps: ' + steps, 2, 30);
+  }
 }

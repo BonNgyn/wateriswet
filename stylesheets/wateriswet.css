@@ -1,28 +1,5 @@
-<<<<<<< HEAD
+
 /*main html css*/
-
-#bloo {
-=======
-/*#bloo {
->>>>>>> 3c58bb3fd5a0af71e313cad5224dde957ce4b537
-
-    position: absolute;
-    top: ;
-    left: 36px;
-    width: 36px;
-    height: 36px;
-    background: url(https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png) no-repeat;
-}*/
-
-#supplies{
-  position: absolute;
-  top: 300px;
-  left: 36px;
-  width: 36px;
-  height: 36px;
-  background: url(http://www.bodenimages.com/productimages/sw/15GAUT_33375_YEL_s.jpg) no-repeat;
-}
-
 
 
 a:link {
@@ -35,7 +12,10 @@ a:visited {
     color: black;
 }
 
+
+
 body{
+
   text-align: center;
   font-family: 'Open Sans Condensed', sans-serif;
   display: flex;
@@ -64,7 +44,10 @@ body{
   display: inline-block;
   height: 50%;
   font-size: 20px;
+
 }
+
+
 
 .footer{
   display: flex;
@@ -81,7 +64,7 @@ body{
   align-content: flex-end;
   flex-wrap: wrap;
   min-width: 100%;
-  /*position: relative;*/
+
 }
 
 
@@ -93,7 +76,7 @@ body{
   flex: 1;
   align-content: flex-end;
   min-width: 100%;
-  /*position: relative;*/
+
 }
 
 
@@ -102,4 +85,25 @@ body{
 
   .gameCenter{
     position: relative;
+  }
+
+
+  /*end.html page css*/
+ .endpage{
+   text-align: center;
+   display: flex;
+   flex-wrap: wrap;
+   
+
+ }
+
+  .gameOverMessage{
+    text-align: center;
+    min-width: 100%;
+  }
+
+  .bottomMessages{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
