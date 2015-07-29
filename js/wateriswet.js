@@ -3,6 +3,7 @@ window.onload = function()
     var canvas = document.getElementById('canvas');
     document.addEventListener('keydown', doKeyDown, true);
     var ctx = canvas.getContext('2d');
+    var bloo_image;
 
     ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
     ctx.strokeStyle = 'black'; // The border will also be black
@@ -65,7 +66,7 @@ window.onload = function()
       $( "#scorenum" ).text(steps);
 
      console.log(steps);
-     if (steps <0){
+     if (steps <= 0){
        console.log('gameover');
        window.location.href = "/end";
         }
@@ -92,7 +93,7 @@ window.onload = function()
     }
 
     function yellow_supplies() {
-        yellow_image = new Image();
+        var yellow_image = new Image();
         yellow_image.src = 'http://www.bodenimages.com/productimages/sw/15GAUT_33375_YEL_s.jpg';
         yellow_image.onload = function() {
             ctx.drawImage(yellow_image, randyellowy, randyellowx)
@@ -101,13 +102,13 @@ window.onload = function()
 
 
     function red_triangle() {
-        red_triangle = new Image();
+        var red_triangle = new Image();
         red_triangle.src = 'images/red_triangle.png';
         red_triangle.onload = function() {
             ctx.drawImage(red_triangle, randredy, randredx)
         }
     }
-//Function for Bloo to move
+
 
     function checkSupplies() {
         if((randyellowx>(dx+x)>(randyellowx-10)) || ((randyellowy)>(dy+y)>(randyellowy-10)) ||
@@ -121,7 +122,7 @@ window.onload = function()
         }
     }
 
-
+//Function for Bloo to move
     function doKeyDown(e) {
         if((dx+x)<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
@@ -131,6 +132,7 @@ window.onload = function()
                 checkSupplies();
                 x = x + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
+
             }
         }
         if((dy+y)>(0)){
@@ -164,19 +166,12 @@ window.onload = function()
 
             }
         }
+        red_triangle();
       }
 
 
-//When the characters collide
-        function isCollide(a, b) {
-    return !(
-        ((blue_bloo.y + blue_bloo.height) < (yellow_supplies.y)) ||
-        (blue_bloo.y > (yellow_supplies.y + yellow_supplies.height)) ||
-        ((blue_bloo.x + blue_bloo.width) < yellow_supplies.x) ||
-        (blue_bloo.x > (yellow_supplies.x + yellow_supplies.width))
-    );
 
-  }
+
 
 //the canvas clears
     function clearCanvas() {
