@@ -39,7 +39,7 @@ window.onload = function()
     yellow_supplies();
     red_triangle();
 
-//steps goes down each time an arrow key is pressed
+    //steps goes down each time an arrow key is pressed
     var steps;
     steps = 100;
     $( "#scorenum" ).text(steps);
