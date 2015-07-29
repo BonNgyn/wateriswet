@@ -1,1 +1,56 @@
 /*This is the css file for the bottom four links (instructions, about us, high score, thanks)*/
+
+body{
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+.container { 
+    width: 400px; 
+    height: 400px; 
+    overflow: hidden; 
+    padding-left: 3%;
+}
+.container img { 
+    width: 100%;
+}
+.group {
+	padding: 25%;
+	margin: auto;
+	text-align: center;
+}
+#irwin { 
+	padding-top: 8%;
+	padding-bottom: 8%;
+	background-image: url('http://www.amazedot.com/wp-content/uploads/2014/05/websiteDot.blue@2x.png');
+	background-attachment: fixed;
+	opacity: .8;
+}
+#lilly {
+	padding-top: 8%;
+	padding-bottom: 8%;
+}
+#bonnie {
+	padding-top: 8%;
+	padding-bottom: 8%;
+}
+.name {
+	padding-left: 7%;
+	font-size: 50px;
+}
+span {
+	padding-left:20%;
+	font-size: 30px;
+}
+/*.name {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+  align-content: flex-end;
+  min-width: 100%;
+}
+.bios {
+  display: flex;
+  min-width: 100%;
+  flex-wrap: wrap;
+
+}*/
