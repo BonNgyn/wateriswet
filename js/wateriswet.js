@@ -27,7 +27,7 @@ window.onload = function()
     randredx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
     randredy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
 
-    
+
     drawMain();
     blue_bloo();
     yellow_supplies();
@@ -56,11 +56,9 @@ window.onload = function()
 
     $(document).keydown(function(e) {
 
-      steps = steps -1;
-      $( "#scorenum" ).text(steps);
-      $("#collectednum").text (collected);
-
-
+     steps = steps -1;
+     $( "#scorenum" ).text(steps);
+     $("#collectednum").text (collected);
      console.log(steps);
      if (steps <= 0){
        console.log('gameover');
