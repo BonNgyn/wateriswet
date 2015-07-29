@@ -6,6 +6,7 @@ window.onload = function()
 
     ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
     ctx.strokeStyle = 'black'; // The border will also be black
+
     randx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
     randy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
     dx = randx;
@@ -15,6 +16,16 @@ window.onload = function()
 
     randyellowx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
     randyellowy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
+
+
+    dx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+    dy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+    x = 0;
+    y = 0;
+
+    randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+    randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+
 
     randredx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
     randredy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
@@ -30,8 +41,23 @@ window.onload = function()
 
 //steps goes down each time an arrow key is pressed
     var steps;
-    steps = 20;
+    steps = 100;
     $( "#scorenum" ).text(steps);
+
+
+    var currentKey;          //records the current key pressed
+    var TimerWalk;          //timer handle
+    var charWalk = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
+    var charSpeed = 400;
+    $(document).ready(function() {
+
+     //add character state class
+     $('#bloo').addClass('front-stand');
+
+     });
+
+
+
 
     $(document).keydown(function(e) {
 
@@ -73,6 +99,7 @@ window.onload = function()
         }
     }
 
+
     function red_triangle() {
         red_triangle = new Image();
         red_triangle.src = 'images/red_triangle.png';
@@ -81,12 +108,27 @@ window.onload = function()
         }
     }
 //Function for Bloo to move
+
+    function checkSupplies() {
+        if((randyellowx>(dx+x)>(randyellowx-10)) || ((randyellowy)>(dy+y)>(randyellowy-10)) ||
+            (randyellowx>(dx+x)>(randyellowx+10)) || ((randyellowy)>(dy+y)>(randyellowy+10)) ||
+            ((randyellowx+10)>(dx+x)>(randyellowx)) || ((randyellowy+10)>(dy+y)>(randyellowy)) ||
+            ((randyellowx-10)>(dx+x)>(randyellowx)) || ((randyellowy-10)>(dy+y)>(randyellowy))){
+            steps = steps + 10;
+            randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+            randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+            yellow_supplies();
+        }
+    }
+
+
     function doKeyDown(e) {
         if((dx+x)<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
                 clearCanvas();
                 drawMain();
                 yellow_supplies();
+                checkSupplies();
                 x = x + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
@@ -96,6 +138,7 @@ window.onload = function()
                 clearCanvas();
                 drawMain();
                 yellow_supplies();
+                checkSupplies();
                 y = y - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
@@ -105,6 +148,7 @@ window.onload = function()
                 clearCanvas();
                 drawMain();
                 yellow_supplies();
+                checkSupplies();
                 y = y + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
@@ -114,6 +158,7 @@ window.onload = function()
                 clearCanvas();
                 drawMain();
                 yellow_supplies();
+                checkSupplies();
                 x = x - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
 
