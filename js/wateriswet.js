@@ -7,15 +7,14 @@ window.onload = function()
 
     ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
     ctx.strokeStyle = 'black'; // The border will also be black
-    randx = Math.floor((Math.random() * canvas.width - 100) + 1);
-    randy = Math.floor((Math.random() * canvas.height - 100) + 1);
-    dx = randx;
-    dy = randy;
+
+    dx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+    dy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
     x = 0;
     y = 0;
 
-    randyellowx = Math.floor((Math.random() * canvas.width - 100) + 1);
-    randyellowy = Math.floor((Math.random() * canvas.height - 100) + 1);
+    randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+    randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
 
     // var body = document.getElementsByTagName('body')[0];
     // body.appendChild(canvas);
@@ -29,12 +28,12 @@ window.onload = function()
     blue_bloo();
     
     var steps;
-    steps = 20;
+    steps = 100;
     $( "#scorenum" ).text(steps);
 
     var currentKey;          //records the current key pressed
     var TimerWalk;          //timer handle
-    var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
+    var charWalk = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
     var charSpeed = 400;
     $(document).ready(function() {
 
@@ -88,12 +87,25 @@ window.onload = function()
         }
     }
 
+    function checkSupplies() {
+        if((randyellowx>(dx+x)>(randyellowx-10)) || ((randyellowy)>(dy+y)>(randyellowy-10)) ||
+            (randyellowx>(dx+x)>(randyellowx+10)) || ((randyellowy)>(dy+y)>(randyellowy+10)) ||
+            ((randyellowx+10)>(dx+x)>(randyellowx)) || ((randyellowy+10)>(dy+y)>(randyellowy)) ||
+            ((randyellowx-10)>(dx+x)>(randyellowx)) || ((randyellowy-10)>(dy+y)>(randyellowy))){
+            steps = steps + 10;
+            randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+            randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+            yellow_supplies();
+        }
+    }
+
     function doKeyDown(e) {
         if((dx+x)<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
                 clearCanvas();
                 drawMain();
                 yellow_supplies();
+                checkSupplies();
                 x = x + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
@@ -103,6 +115,7 @@ window.onload = function()
                 clearCanvas();
                 drawMain();
                 yellow_supplies();
+                checkSupplies();
                 y = y - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
@@ -112,6 +125,7 @@ window.onload = function()
                 clearCanvas();
                 drawMain();
                 yellow_supplies();
+                checkSupplies();
                 y = y + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
@@ -121,6 +135,7 @@ window.onload = function()
                 clearCanvas();
                 drawMain();
                 yellow_supplies();
+                checkSupplies();
                 x = x - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
