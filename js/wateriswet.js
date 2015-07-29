@@ -155,7 +155,6 @@ window.onload = function()
         if((dx+x)<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
                 clearCanvas();
-                step();
                 blue_bloo();
                 x = x + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
@@ -164,8 +163,7 @@ window.onload = function()
         }
         if((dy+y)>(0)){
             if(e.keyCode == 37) /*left*/{
-                clearCanvas();
-                step();                
+                clearCanvas();          
                 blue_bloo();
                 y = y - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
@@ -174,7 +172,6 @@ window.onload = function()
         if((dy+y)<(canvas.width-40)){
             if(e.keyCode == 39) /*right*/{
                 clearCanvas();
-                step();
                 blue_bloo();
                 y = y + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
@@ -183,17 +180,17 @@ window.onload = function()
         if((dx+x)>(20)){
             if(e.keyCode == 38) /*up*/{
                 clearCanvas();
-                step();
                 blue_bloo();
                 x = x - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
 
             }
         }
-    
+        
         drawMain();
         yellow_supplies();
         red_triangle();
+        step();
       }
 
     //the canvas clears
