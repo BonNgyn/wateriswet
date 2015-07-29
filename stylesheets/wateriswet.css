@@ -1,4 +1,18 @@
+
+
 /*main html css*/
+
+
+
+body{
+
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
 a:link {
     text-decoration: none;
   }
@@ -9,19 +23,6 @@ a:visited {
     color: black;
 }
 
-h2 {
-  text-align: center;
-  margin: auto;
-}
-
-
-body{
-  text-align: center;
-  font-family: 'Open Sans Condensed', sans-serif;
-  display: flex;
-  flex-wrap: wrap;
-
-}
 
 .mainpage{
   display: flex;
@@ -45,7 +46,35 @@ body{
   height: 50%;
   font-size: 20px;
 
+
 }
+
+.mainpage{
+  display: flex;
+  min-width: 100%;
+  flex-wrap: wrap;
+}
+
+.maintitle{
+  text-align: center;
+  margin-top: 200px;
+  font-size: 60px;
+  min-width: 100%;
+
+
+}
+
+
+.playbutton {
+
+  min-width: 100%;
+  display: inline-block;
+  height: 50%;
+  font-size: 20px;
+
+}
+
+
 
 .footer{
   display: flex;
@@ -63,6 +92,7 @@ body{
   flex-wrap: wrap;
   min-width: 100%;
 
+
 }
 
 .footerwords{
@@ -76,16 +106,47 @@ body{
 }
 
   /*game.html page css*/
-  .gameCenter{
-    margin: auto;
+
+  .gamePage{
+    min-width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
   }
 
-  .score {
-    margin: auto;
+  .gameHeader{
+    font-size: 40px;
+    font-weight: normal;
   }
 
-  h2{
-    align-items: baseline;
+  /*end.html page css*/
+ .endpage{
+   text-align: center;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   min-width: 100%;
+
+
+ }
+
+  .gameOverMessage{
+    text-align: center;
+    min-width: 100%;
+    margin-top: 200px;
+    margin-bottom: 200px;
   }
+
+  .bottomMessages{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    min-width: 100%;
+
+  }
+
+
+
 
   /*end.html page css*/

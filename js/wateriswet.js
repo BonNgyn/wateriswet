@@ -16,17 +16,20 @@ window.onload = function()
     var x = 0;
     var y = 0;
 
-    var randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
-    var randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+
+    dx = Math.floor((Math.random() * (canvas.width - 80)) + 50); //random x coords of bloo
+    dy = Math.floor((Math.random() * (canvas.height - 80)) + 50); // random y coords of bloo
+    x = 0; //added step of bloo
+    y = 0; //added step of bloo
+
+    randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50); //rand x coords of yellow
+    randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50); //rand y coords of yellow
 
 
-    var randredx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
-    var randredy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+    randredx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
+    randredy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
 
-    // The border is drawn on the outside of the rectangle, so we'll
-    // need to move it a bit to the right and up. Also, we'll need
-    // to leave a 20 pixels space on the top to draw the interface.
-
+    
     drawMain();
     blue_bloo();
     yellow_supplies();
@@ -37,22 +40,13 @@ window.onload = function()
     steps = 100;
     $( "#scorenum" ).text(steps);
 
+    var collected;
+    collected = 0;
+    $("#collectednum").text(collected);
 
     var currentKey;          //records the current key pressed
     var TimerWalk;          //timer handle
     var charWalk = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
-    var charSpeed = 400;
-    $(document).ready(function() {
-
-     //add character state class
-     $('#bloo').addClass('front-stand');
-
-     });
-
-    //functions or the 3 characters
-    var currentKey;          //records the current key pressed
-    var TimerWalk;          //timer handle
-    var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
     var charSpeed = 400;
     $(document).ready(function() {
 
@@ -77,7 +71,6 @@ window.onload = function()
         }
     }
 
-
     function red_triangle() {
         red_image = new Image();
         red_image.src = 'images/red_triangle.png';
@@ -86,30 +79,62 @@ window.onload = function()
         }
     }
 
+
+// checks if blue and red collide
+
+
+
+    function blue_red_collision(){
+      console.log("blue coords:" + dx + x + "," + dy + y);
+      console.log("red coords: " + randredx + "," +randredy);
+      if ( ((dx + x - 16)< randredx) && (randredx < (dx + x + 16) ) ) {
+          if( ((dy +y - 16 ) <randredy) && (randredy< (dy + y + 16)) ){
+
+          window.location.href = "/end";
+          $("#collectednum").text (collected);
+
+        }
+      }
+      if ( (randredx < (dx + x -16) )&& (dx < (randredx + y +40) )){
+        if ((randredy < (dy+ y )) &&  (dy < (randredy + y +40))){
+
+          window.location.href = "/end";
+          $("#collectednum").text (collected);
+        }
+      }
+    }
+
+    //checks if blue and yellow collide
+
     function blue_yellow_collision(){
 
     console.log("blue coords:" + dx + x + "," + dy +y);
     console.log("yellow coods: " + randyellowx + "," +randyellowy);
-        if ( ((dx + x )< randyellowx) && (randyellowx < (dx + x + 40) ) ) {
-            if( ((dy +y ) <randyellowy) && (randyellowy< (dy + y + 40)) ){
+        if ( ((dx + x - 16)< randyellowx) && (randyellowx < (dx + x + 16) ) ) {
+            if( ((dy +y - 16) <randyellowy) && (randyellowy< (dy + y + 16)) ){
                 console.log("collided");
-                steps = steps + 10;
+                steps = steps + 20;
+                collected = collected + 1;
                 randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
                 randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
             }
         }
-        if ( (randyellowx < (dx + x) )&& (dx < (randyellowx + y +40) )){
-            if ((randyellowy < (dy+ y)) &&  (dy < (randyellowy + y +40))){
+        if ( (randyellowx < (dx + x - 16) )&& (dx < (randyellowx + y + 16) )){
+            if ((randyellowy < (dy+ y -16)) &&  (dy < (randyellowy + y + 16))){
                 console.log("collideded");
-                steps = steps + 10;
+                steps = steps + 20;
+                collected = collected + 1;
                 randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
                 randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
             }
+
         }
+
     }
     function step() {
         steps = steps -1;
         $( "#scorenum" ).text(steps);
+        $("#collectednum").text (collected);
 
 
         console.log(steps);
@@ -118,7 +143,12 @@ window.onload = function()
             window.location.href = "/end";
         }
         blue_yellow_collision();
+        blue_red_collision();
     }
+
+//Hard coding the red_triangle
+
+
 
     //Function for Bloo to move
     function doKeyDown(e) {
@@ -166,10 +196,6 @@ window.onload = function()
         red_triangle();
       }
 
-
-
-
-
     //the canvas clears
     function clearCanvas() {
         canvas.width = canvas.width;
@@ -187,4 +213,4 @@ window.onload = function()
             ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
         }
 
-  };
+  }
