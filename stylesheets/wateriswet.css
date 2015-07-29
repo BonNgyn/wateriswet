@@ -1,40 +1,92 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+/*main html css*/
+
+#bloo {
+=======
+/*#bloo {
+>>>>>>> 3c58bb3fd5a0af71e313cad5224dde957ce4b537
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
 
 
 
-.gameCenter{
-  position: relative;
-  margin: auto;
+
+a:link {
+    text-decoration: none;
+  }
+
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+body{
   text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
 
 }
 
-h1, h2{
-  text-align: center;
+.mainpage{
+  display: flex;
+  min-width: 100%;
+  flex-wrap: wrap;
 }
 
-.main_pic{
-  position:relative;
+.maintitle{
   text-align: center;
+  margin-top: 200px;
+  font-size: 60px;
+  min-width: 100%;
+
 }
 
-.grid_image{
 
+.playbutton {
+
+  min-width: 100%;
   display: inline-block;
-}
-
-.game {
-  position: absolute;
-  top: 20%;
-  left: 0;
-  width: 100%;
   height: 50%;
-  font-size: 40px;
-
-
+  font-size: 20px;
 }
 
 .footer{
+  display: flex;
+  min-width: 100%;
+  flex-wrap: wrap;
+}
+
+.footerimages{
+  margin-top: 300px;
   text-align: center;
   display: flex;
   justify-content: space-around;
   flex: 1;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  min-width: 100%;
+  /*position: relative;*/
+}
+
+
+
+.footerwords{
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+  align-content: flex-end;
+  min-width: 100%;
+  /*position: relative;*/
+}
+
+
+  /*game.html page css*/
+
+
+  .gameCenter{
+    position: relative;
+  }

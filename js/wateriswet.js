@@ -24,8 +24,11 @@ window.onload = function()
     yellow_supplies();
     blue_bloo();
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
     var steps;
     steps = 20;
     $( "#scorenum" ).text(steps);
@@ -135,7 +138,16 @@ window.onload = function()
             // The border is drawn on the outside of the rectangle, so we'll
             // need to move it a bit to the right and up. Also, we'll need
             // to leave a 20 pixels space on the top to draw the interface.
+<<<<<<< HEAD
             ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
         }
 
   };
+=======
+
+            ctx.strokeRect(2, 40, canvas.width - 4, canvas.height - 40);
+            ctx.font = '30px sans-serif';
+            // ctx.fillText('Steps: ' + steps, 2, 30);
+        }
+}
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
