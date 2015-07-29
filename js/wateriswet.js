@@ -4,6 +4,8 @@ window.onload = function()
     document.addEventListener('keydown', doKeyDown, true);
     var ctx = canvas.getContext('2d');
     var bloo_image;
+    var red_image;
+    var yellow_image;
 
     ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
     ctx.strokeStyle = 'black'; // The border will also be black
@@ -47,21 +49,6 @@ window.onload = function()
 
      });
 
-
-    $(document).keydown(function(e) {
-
-      steps = steps -1;
-      $( "#scorenum" ).text(steps);
-
-
-    console.log(steps);
-    if (steps <= 0){
-        console.log('gameover');
-        window.location.href = "/end";
-    }
-    blue_yellow_collision();
-    });
-
     //functions or the 3 characters
     var currentKey;          //records the current key pressed
     var TimerWalk;          //timer handle
@@ -83,7 +70,7 @@ window.onload = function()
     }
 
     function yellow_supplies() {
-        var yellow_image = new Image();
+        yellow_image = new Image();
         yellow_image.src = 'http://www.bodenimages.com/productimages/sw/15GAUT_33375_YEL_s.jpg';
         yellow_image.onload = function() {
             ctx.drawImage(yellow_image, randyellowy, randyellowx)
@@ -92,10 +79,10 @@ window.onload = function()
 
 
     function red_triangle() {
-        var red_triangle = new Image();
-        red_triangle.src = 'images/red_triangle.png';
-        red_triangle.onload = function() {
-            ctx.drawImage(red_triangle, randredy, randredx)
+        red_image = new Image();
+        red_image.src = 'images/red_triangle.png';
+        red_image.onload = function() {
+            ctx.drawImage(red_image, randredy, randredx)
         }
     }
 
@@ -120,12 +107,25 @@ window.onload = function()
             }
         }
     }
+    function step() {
+        steps = steps -1;
+        $( "#scorenum" ).text(steps);
 
-//Function for Bloo to move
+
+        console.log(steps);
+        if (steps <= 0){
+            console.log('gameover');
+            window.location.href = "/end";
+        }
+        blue_yellow_collision();
+    }
+
+    //Function for Bloo to move
     function doKeyDown(e) {
         if((dx+x)<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
                 clearCanvas();
+                step();
                 blue_bloo();
                 x = x + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
@@ -135,6 +135,7 @@ window.onload = function()
         if((dy+y)>(0)){
             if(e.keyCode == 37) /*left*/{
                 clearCanvas();
+                step();                
                 blue_bloo();
                 y = y - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
@@ -143,6 +144,7 @@ window.onload = function()
         if((dy+y)<(canvas.width-40)){
             if(e.keyCode == 39) /*right*/{
                 clearCanvas();
+                step();
                 blue_bloo();
                 y = y + 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
@@ -151,12 +153,14 @@ window.onload = function()
         if((dx+x)>(20)){
             if(e.keyCode == 38) /*up*/{
                 clearCanvas();
+                step();
                 blue_bloo();
                 x = x - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
 
             }
         }
+    
         drawMain();
         yellow_supplies();
         red_triangle();
