@@ -93,17 +93,20 @@ body{
    text-align: center;
    display: flex;
    flex-wrap: wrap;
-   
+   align-items: center;
+
 
  }
 
   .gameOverMessage{
     text-align: center;
-    min-width: 100%;
+    width: 100%;
   }
 
   .bottomMessages{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    width: 100%;
+
   }
