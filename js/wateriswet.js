@@ -26,7 +26,7 @@ window.onload = function()
     drawMain();
     yellow_supplies();
     blue_bloo();
-    
+
     var steps;
     steps = 100;
     $( "#scorenum" ).text(steps);
@@ -76,7 +76,7 @@ window.onload = function()
         bloo_image.src = 'https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png';
         bloo_image.onload = function() {
             ctx.drawImage(bloo_image, dy+y,dx+x)
-        }        
+        }
     }
 
     function yellow_supplies() {
@@ -140,7 +140,7 @@ window.onload = function()
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
         }
-        
+
     }
 
     function clearCanvas() {
@@ -156,49 +156,9 @@ window.onload = function()
             // The border is drawn on the outside of the rectangle, so we'll
             // need to move it a bit to the right and up. Also, we'll need
             // to leave a 20 pixels space on the top to draw the interface.
-            ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
-        }    
 
-  };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            ctx.strokeRect(2, 40, canvas.width - 4, canvas.height - 40);
+            ctx.font = '30px sans-serif';
+            // ctx.fillText('Steps: ' + steps, 2, 30);
+        }
+}

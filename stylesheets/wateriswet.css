@@ -1,4 +1,14 @@
+<<<<<<< HEAD
 /*main html css*/
+=======
+<<<<<<< HEAD
+/*main html css*/
+
+#bloo {
+=======
+/*#bloo {
+>>>>>>> 3c58bb3fd5a0af71e313cad5224dde957ce4b537
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
 
 
 
@@ -14,6 +24,7 @@ a:visited {
 }
 
 
+<<<<<<< HEAD
 
 body{
 
@@ -21,9 +32,20 @@ body{
   font-family: 'Open Sans Condensed', sans-serif;
   display: flex;
   flex-wrap: wrap;
+=======
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
 
+a:link {
+    text-decoration: none;
+  }
+
+
+a:visited {
+    text-decoration: none;
+    color: black;
 }
 
+<<<<<<< HEAD
 .mainpage{
   display: flex;
   min-width: 100%;
@@ -46,9 +68,46 @@ body{
   height: 50%;
   font-size: 20px;
 
+=======
+body{
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.mainpage{
+  display: flex;
+  min-width: 100%;
+  flex-wrap: wrap;
+}
+
+.maintitle{
+  text-align: center;
+  margin-top: 200px;
+  font-size: 60px;
+  min-width: 100%;
+
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
 }
 
 
+.playbutton {
+
+<<<<<<< HEAD
+.footer{
+  display: flex;
+  min-width: 100%;
+  flex-wrap: wrap;
+}
+
+=======
+  min-width: 100%;
+  display: inline-block;
+  height: 50%;
+  font-size: 20px;
+}
 
 .footer{
   display: flex;
@@ -56,6 +115,7 @@ body{
   flex-wrap: wrap;
 }
 
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
 .footerimages{
   margin-top: 300px;
   text-align: center;
@@ -65,7 +125,11 @@ body{
   align-content: flex-end;
   flex-wrap: wrap;
   min-width: 100%;
+<<<<<<< HEAD
 
+=======
+  /*position: relative;*/
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
 }
 
 
@@ -77,7 +141,11 @@ body{
   flex: 1;
   align-content: flex-end;
   min-width: 100%;
+<<<<<<< HEAD
 
+=======
+  /*position: relative;*/
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
 }
 
 
@@ -87,7 +155,10 @@ body{
   .gameCenter{
     position: relative;
   }
+<<<<<<< HEAD
 
 
   /*end.html page css*/
 
+=======
+>>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
