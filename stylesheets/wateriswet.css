@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*main html css*/
 
@@ -44,6 +45,30 @@ a:visited {
   display: inline-block;
   height: 50%;
   font-size: 20px;
+=======
+/*main html css*/
+a:link {
+    text-decoration: none;
+  }
+
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+h2 {
+  text-align: center;
+  margin: auto;
+}
+
+
+body{
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+>>>>>>> 9660b16fd1009a857b6d22700010838846af8bcd
 
 }
 
@@ -59,7 +84,10 @@ a:visited {
   font-size: 60px;
   min-width: 100%;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9660b16fd1009a857b6d22700010838846af8bcd
 }
 
 
@@ -80,7 +108,10 @@ a:visited {
   flex-wrap: wrap;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9660b16fd1009a857b6d22700010838846af8bcd
 .footerimages{
   margin-top: 300px;
   text-align: center;
@@ -91,11 +122,12 @@ a:visited {
   flex-wrap: wrap;
   min-width: 100%;
 
+<<<<<<< HEAD
   /*position: relative;*/
 
+=======
+>>>>>>> 9660b16fd1009a857b6d22700010838846af8bcd
 }
-
-
 
 .footerwords{
   text-align: center;
@@ -104,18 +136,26 @@ a:visited {
   flex: 1;
   align-content: flex-end;
   min-width: 100%;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9660b16fd1009a857b6d22700010838846af8bcd
 }
 
-
   /*game.html page css*/
-
-
   .gameCenter{
-    position: relative;
+    margin: auto;
+  }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9660b16fd1009a857b6d22700010838846af8bcd
+
+  .score {
+    margin: auto;
   }
 
-
-
+<<<<<<< HEAD
   /*end.html page css*/
  .endpage{
    text-align: center;
@@ -141,4 +181,10 @@ a:visited {
 
 
 
+=======
+  h2{
+    align-items: baseline;
+  }
+
+>>>>>>> 9660b16fd1009a857b6d22700010838846af8bcd
   /*end.html page css*/
