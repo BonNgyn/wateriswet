@@ -53,7 +53,7 @@ window.onload = function()
     $(document).keydown(function(e){
        steps = steps -1;
        $( "#scorenum" ).text(steps);
-       $("#collectednum").text (collected);
+       $("#collectednum").text(collected);
        console.log(steps);
        if (steps <= 0){
          console.log('gameover');
@@ -108,18 +108,18 @@ window.onload = function()
       if ( (( bloo_x - 16)< red_x) && (red_x < ( bloo_x  + 16) ) ) {
           if( (( bloo_y - 16 ) <red_y) && (red_y< ( bloo_y + 16)) ){
           window.location.href = "/end";
-          $("#collectednum").text (collected);
+          $("#collectednumb").text(collected);
 
         }
       }
-
       if( ( (red_x - 16)< bloo_x  )&& (  bloo_x < (red_x + 16) )){
         if (((red_y -16) < bloo_y ) &&  ( bloo_y < (red_y + 16))){
           window.location.href = "/end";
-          $("#collectednum").text (collected);
+          $("#collectednumb").text(collected);
         }
       }
     }
+
 
     //checks if blue and yellow collide
 

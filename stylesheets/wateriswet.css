@@ -5,13 +5,26 @@
 
 
 body{
-
   text-align: center;
   font-family: 'Open Sans Condensed', sans-serif;
   display: flex;
   flex-wrap: wrap;
 }
 
+ul{
+  text-align: center;
+  margin-top: 100px;
+  list-style: none;
+  padding: 100px;
+
+}
+
+h1{
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin-top: 300px;
+
+}
 
 a:link {
     text-decoration: none;
