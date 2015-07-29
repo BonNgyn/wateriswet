@@ -1,24 +1,20 @@
 window.onload = function()
   {
     var canvas = document.getElementById('canvas');
-    console.log(canvas.width);
     document.addEventListener('keydown', doKeyDown, true);
     var ctx = canvas.getContext('2d');
 
     ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
     ctx.strokeStyle = 'black'; // The border will also be black
-    randx = Math.floor((Math.random() * canvas.width - 100) + 1);
-    randy = Math.floor((Math.random() * canvas.height - 100) + 1);
+    randx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
+    randy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
     dx = randx;
     dy = randy;
     x = 0;
     y = 0;
 
-    randyellowx = Math.floor((Math.random() * canvas.width - 100) + 1);
-    randyellowy = Math.floor((Math.random() * canvas.height - 100) + 1);
-
-    // var body = document.getElementsByTagName('body')[0];
-    // body.appendChild(canvas);
+    randyellowx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
+    randyellowy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
 
     // The border is drawn on the outside of the rectangle, so we'll
     // need to move it a bit to the right and up. Also, we'll need
@@ -27,7 +23,9 @@ window.onload = function()
     drawMain();
     yellow_supplies();
     blue_bloo();
-    
+
+
+
     var steps;
     steps = 20;
     $( "#scorenum" ).text(steps);
@@ -42,8 +40,6 @@ window.onload = function()
      $('#bloo').addClass('front-stand');
 
      });
-
-
 
     $(document).keydown(function(e) {
 
@@ -67,17 +63,15 @@ window.onload = function()
      if (steps <0){
        console.log('gameover');
        window.location.href = "/end";
-     }
+        }
     });
-
-
 
     function blue_bloo() {
         bloo_image = new Image();
         bloo_image.src = 'https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png';
         bloo_image.onload = function() {
             ctx.drawImage(bloo_image, dy+y,dx+x)
-        }        
+        }
     }
 
     function yellow_supplies() {
@@ -125,7 +119,7 @@ window.onload = function()
                 ctx.drawImage(bloo_image, dy+y,dx+x)
             }
         }
-        
+
     }
 
     function clearCanvas() {
@@ -142,48 +136,6 @@ window.onload = function()
             // need to move it a bit to the right and up. Also, we'll need
             // to leave a 20 pixels space on the top to draw the interface.
             ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
-        }    
+        }
 
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
