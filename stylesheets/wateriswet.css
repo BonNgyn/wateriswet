@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 /*main html css*/
-
-#bloo {
-=======
-/*#bloo {
->>>>>>> 3c58bb3fd5a0af71e313cad5224dde957ce4b537
->>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
-
-
-
-
 a:link {
     text-decoration: none;
   }
@@ -21,6 +8,12 @@ a:visited {
     text-decoration: none;
     color: black;
 }
+
+h2 {
+  text-align: center;
+  margin: auto;
+}
+
 
 body{
   text-align: center;
@@ -51,6 +44,7 @@ body{
   display: inline-block;
   height: 50%;
   font-size: 20px;
+
 }
 
 .footer{
@@ -68,10 +62,8 @@ body{
   align-content: flex-end;
   flex-wrap: wrap;
   min-width: 100%;
-  /*position: relative;*/
+
 }
-
-
 
 .footerwords{
   text-align: center;
@@ -80,13 +72,20 @@ body{
   flex: 1;
   align-content: flex-end;
   min-width: 100%;
-  /*position: relative;*/
+
 }
 
-
   /*game.html page css*/
-
-
   .gameCenter{
-    position: relative;
+    margin: auto;
   }
+
+  .score {
+    margin: auto;
+  }
+
+  h2{
+    align-items: baseline;
+  }
+
+  /*end.html page css*/

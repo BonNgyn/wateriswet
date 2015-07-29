@@ -16,23 +16,36 @@ window.onload = function()
     randyellowx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
     randyellowy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
 
+    randredx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
+    randredy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
+
     // The border is drawn on the outside of the rectangle, so we'll
     // need to move it a bit to the right and up. Also, we'll need
     // to leave a 20 pixels space on the top to draw the interface.
 
     drawMain();
-    yellow_supplies();
     blue_bloo();
+    yellow_supplies();
+    red_triangle();
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
+//steps goes down each time an arrow key is pressed
     var steps;
     steps = 20;
     $( "#scorenum" ).text(steps);
 
+    $(document).keydown(function(e) {
+
+      steps = steps -1;
+      $( "#scorenum" ).text(steps);
+
+     console.log(steps);
+     if (steps <0){
+       console.log('gameover');
+       window.location.href = "/end";
+        }
+    });
+
+//functions or the 3 characters
     var currentKey;          //records the current key pressed
     var TimerWalk;          //timer handle
     var charStep = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
@@ -43,31 +56,6 @@ window.onload = function()
      $('#bloo').addClass('front-stand');
 
      });
-
-    $(document).keydown(function(e) {
-
-      steps = steps -1;
-      $( "#scorenum" ).text(steps);
-      if (!currentKey) {
-
-       //set the currentKey to the key that is down
-       currentKey = e.keyCode;
-
-       //execute character movement function charWalk('direction')
-        switch(e.keyCode) {
-         case 38: charWalk('up');    break;
-         case 39: charWalk('right'); break;
-         case 40: charWalk('down');  break;
-         case 37: charWalk('left');  break;
-       }
-     }
-
-     console.log(steps);
-     if (steps <0){
-       console.log('gameover');
-       window.location.href = "/end";
-        }
-    });
 
     function blue_bloo() {
         bloo_image = new Image();
@@ -85,6 +73,14 @@ window.onload = function()
         }
     }
 
+    function red_triangle() {
+        red_triangle = new Image();
+        red_triangle.src = 'images/red_triangle.png';
+        red_triangle.onload = function() {
+            ctx.drawImage(red_triangle, randredy, randredx)
+        }
+    }
+//Function for Bloo to move
     function doKeyDown(e) {
         if((dx+x)<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
@@ -120,16 +116,29 @@ window.onload = function()
                 yellow_supplies();
                 x = x - 10;
                 ctx.drawImage(bloo_image, dy+y,dx+x)
+
             }
         }
+      }
 
-    }
 
+//When the characters collide
+        function isCollide(a, b) {
+    return !(
+        ((blue_bloo.y + blue_bloo.height) < (yellow_supplies.y)) ||
+        (blue_bloo.y > (yellow_supplies.y + yellow_supplies.height)) ||
+        ((blue_bloo.x + blue_bloo.width) < yellow_supplies.x) ||
+        (blue_bloo.x > (yellow_supplies.x + yellow_supplies.width))
+    );
+
+  }
+
+//the canvas clears
     function clearCanvas() {
         canvas.width = canvas.width;
     }
 
-
+//draws the borders
     function drawMain()
         {
             ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
@@ -138,16 +147,7 @@ window.onload = function()
             // The border is drawn on the outside of the rectangle, so we'll
             // need to move it a bit to the right and up. Also, we'll need
             // to leave a 20 pixels space on the top to draw the interface.
-<<<<<<< HEAD
             ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
         }
 
   };
-=======
-
-            ctx.strokeRect(2, 40, canvas.width - 4, canvas.height - 40);
-            ctx.font = '30px sans-serif';
-            // ctx.fillText('Steps: ' + steps, 2, 30);
-        }
-}
->>>>>>> 48395881ab4c530eb9b55ba8e754f4e5db60706e
