@@ -2,38 +2,37 @@ window.onload = function()
   {
     var canvas = document.getElementById('canvas');
     document.addEventListener('keydown', doKeyDown, true);
-    var ctx = canvas.getContext('2d');
+    var ctx= canvas.getContext('2d');
     var bloo_image;
     var red_image;
     var yellow_image;
+
 
     ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
     ctx.strokeStyle = 'black'; // The border will also be black
 
 
-    var dx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
-    var dy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
-    var x = 0;
-    var y = 0;
+    var bloo_x = Math.floor((Math.random() * (canvas.width - 80)) + 50); // x coords of bloo
+    var bloo_y = Math.floor((Math.random() * (canvas.height - 80)) + 50); //y coords of bloo
 
 
-    dx = Math.floor((Math.random() * (canvas.width - 80)) + 50); //random x coords of bloo
-    dy = Math.floor((Math.random() * (canvas.height - 80)) + 50); // random y coords of bloo
-    x = 0; //added step of bloo
-    y = 0; //added step of bloo
 
-    randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50); //rand x coords of yellow
-    randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50); //rand y coords of yellow
+    var yellow_x = Math.floor((Math.random() * (canvas.width - 80)) + 50); //x coords of yellow
+    var yellow_y = Math.floor((Math.random() * (canvas.height - 80)) + 50); //y coords of yellow
 
 
-    randredx = Math.floor((Math.random() * (canvas.width - 100)) + 50);
-    randredy = Math.floor((Math.random() * (canvas.height - 100)) + 50);
+    var red_x = Math.floor((Math.random() * (canvas.width - 100)) + 50); //x coords of red
+    var red_y = Math.floor((Math.random() * (canvas.height - 100)) + 50); // y coords of red
 
-    
+    var randnum = 0; //sets the var for if red moves towards or away.
+
+
+
     drawMain();
     blue_bloo();
     yellow_supplies();
     red_triangle();
+
 
     //steps goes down each time an arrow key is pressed
     var steps;
@@ -48,6 +47,29 @@ window.onload = function()
     var TimerWalk;          //timer handle
     var charWalk = 2;       //1=1st foot, 2=stand, 3=2nd foot, 4=stand
     var charSpeed = 400;
+
+    $(document).ready(function() {
+     //add character state class
+     $('#bloo').addClass('front-stand');
+
+     });
+
+    $(document).keydown(function(e){
+       steps = steps -1;
+       $( "#scorenum" ).text(steps);
+       $("#collectednum").text (collected);
+      //  console.log(steps);
+       if (steps <= 0){
+         console.log('gameover');
+         window.location.href = "/end";
+          }
+        blue_yellow_collision();
+        blue_red_collision();
+
+
+    });
+
+
     $(document).ready(function() {
 
      //add character state class
@@ -59,7 +81,7 @@ window.onload = function()
         bloo_image = new Image();
         bloo_image.src = 'https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png';
         bloo_image.onload = function() {
-            ctx.drawImage(bloo_image, dy+y,dx+x)
+            ctx.drawImage(bloo_image,  bloo_x ,bloo_y)
         }
     }
 
@@ -67,7 +89,7 @@ window.onload = function()
         yellow_image = new Image();
         yellow_image.src = 'http://www.bodenimages.com/productimages/sw/15GAUT_33375_YEL_s.jpg';
         yellow_image.onload = function() {
-            ctx.drawImage(yellow_image, randyellowy, randyellowx)
+            ctx.drawImage(yellow_image, yellow_x, yellow_y)
         }
     }
 
@@ -75,7 +97,7 @@ window.onload = function()
         red_image = new Image();
         red_image.src = 'images/red_triangle.png';
         red_image.onload = function() {
-            ctx.drawImage(red_image, randredy, randredx)
+            ctx.drawImage(red_image, red_x , red_y )
         }
     }
 
@@ -84,20 +106,19 @@ window.onload = function()
 
 
 
-    function blue_red_collision(){
-      console.log("blue coords:" + dx + x + "," + dy + y);
-      console.log("red coords: " + randredx + "," +randredy);
-      if ( ((dx + x - 16)< randredx) && (randredx < (dx + x + 16) ) ) {
-          if( ((dy +y - 16 ) <randredy) && (randredy< (dy + y + 16)) ){
-
+    function blue_red_collision(){ //removed  and y
+      console.log("blue coords:" +  bloo_x  + "," +  bloo_y );
+      console.log("red coords: " + red_x + "," +red_y);
+      if ( (( bloo_x - 16)< red_x) && (red_x < ( bloo_x  + 16) ) ) {
+          if( (( bloo_y - 16 ) <red_y) && (red_y< ( bloo_y + 16)) ){
           window.location.href = "/end";
           $("#collectednum").text (collected);
 
         }
       }
-      if ( (randredx < (dx + x -16) )&& (dx < (randredx + y +40) )){
-        if ((randredy < (dy+ y )) &&  (dy < (randredy + y +40))){
 
+      if( ( (red_x - 16)< bloo_x  )&& (  bloo_x < (red_x + 16) )){
+        if (((red_y -16) < bloo_y ) &&  ( bloo_y < (red_y + 16))){
           window.location.href = "/end";
           $("#collectednum").text (collected);
         }
@@ -107,91 +128,104 @@ window.onload = function()
     //checks if blue and yellow collide
 
     function blue_yellow_collision(){
-
-    console.log("blue coords:" + dx + x + "," + dy +y);
-    console.log("yellow coods: " + randyellowx + "," +randyellowy);
-        if ( ((dx + x - 16)< randyellowx) && (randyellowx < (dx + x + 16) ) ) {
-            if( ((dy +y - 16) <randyellowy) && (randyellowy< (dy + y + 16)) ){
-                console.log("collided");
+        if ( (( bloo_x - 16)< yellow_x) && (yellow_x < ( bloo_x   + 16) ) ) {
+            if( (( bloo_y - 16) <yellow_y) && (yellow_y< ( bloo_y  + 16)) ){
+                // console.log("collided");
                 steps = steps + 20;
                 collected = collected + 1;
-                randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
-                randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+                yellow_x = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+                yellow_y = Math.floor((Math.random() * (canvas.height - 80)) + 50);
             }
         }
-        if ( (randyellowx < (dx + x - 16) )&& (dx < (randyellowx + y + 16) )){
-            if ((randyellowy < (dy+ y -16)) &&  (dy < (randyellowy + y + 16))){
-                console.log("collideded");
+        if ( ((yellow_x -16 )< bloo_x   )&& (bloo_x   < (yellow_x + 16)) ){
+            if (((yellow_y -16) <  bloo_y ) &&  ( bloo_y   < (yellow_y + 16)) ){
+                // console.log("collideded");
                 steps = steps + 20;
                 collected = collected + 1;
-                randyellowx = Math.floor((Math.random() * (canvas.width - 80)) + 50);
-                randyellowy = Math.floor((Math.random() * (canvas.height - 80)) + 50);
+                yellow_x = Math.floor((Math.random() * (canvas.width - 80)) + 50);
+                yellow_y = Math.floor((Math.random() * (canvas.height - 80)) + 50);
             }
 
         }
 
     }
-    function step() {
-        steps = steps -1;
-        $( "#scorenum" ).text(steps);
-        $("#collectednum").text (collected);
 
 
-        console.log(steps);
-        if (steps <= 0){
-            console.log('gameover');
-            window.location.href = "/end";
-        }
-        blue_yellow_collision();
-        blue_red_collision();
-    }
-
-//Hard coding the red_triangle
-
+ //Hard coding the red_triangle
 
 
     //Function for Bloo to move
-    function doKeyDown(e) {
-        if((dx+x)<(canvas.height-40)){
+     function doKeyDown(e) {
+        if(( bloo_y )<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
-                clearCanvas();
-                blue_bloo();
-                x = x + 10;
-                ctx.drawImage(bloo_image, dy+y,dx+x)
-
+                bloo_y =  bloo_y + 10;
+                randnum = Math.floor((Math.random() * 3) + 1);
+                    if (( red_y <(canvas.height-40)) && ( red_y>20)) {
+                        if (randnum == 1) { //if bloo is higher then red
+                            red_y = red_y - 10;
+                        }
+                        else{
+                            red_y = red_y + 10;
+                    }
+                }
             }
         }
-        if((dy+y)>(0)){
+        if(( bloo_x )>(0)){
             if(e.keyCode == 37) /*left*/{
-                clearCanvas();          
-                blue_bloo();
-                y = y - 10;
-                ctx.drawImage(bloo_image, dy+y,dx+x)
+            bloo_x =  bloo_x- 10;
+            randnum = Math.floor((Math.random() * 3) + 1);
+                if ((( red_x )>(0)) && (( red_x )<(canvas.width-40))){
+                    if (randnum == 1){ //if bloo is left of red
+                        red_x = red_x - 10; // red move left with bloo
+                    }
+                    else{
+                        red_x = red_x + 10; //move right towards
+                    }
+                }
             }
         }
-        if((dy+y)<(canvas.width-40)){
-            if(e.keyCode == 39) /*right*/{
-                clearCanvas();
-                blue_bloo();
-                y = y + 10;
-                ctx.drawImage(bloo_image, dy+y,dx+x)
-            }
-        }
-        if((dx+x)>(20)){
-            if(e.keyCode == 38) /*up*/{
-                clearCanvas();
-                blue_bloo();
-                x = x - 10;
-                ctx.drawImage(bloo_image, dy+y,dx+x)
 
-            }
-        }
-        
+        if(( bloo_x )<(canvas.width-40)){
+            if(e.keyCode == 39) /*right*/{
+                bloo_x =  bloo_x + 10;
+                if ((( red_x )>(0)) && (( red_x )<(canvas.width-40))){
+                  randnum = Math.floor((Math.random() * 3) + 1);
+                  if (randnum == 1){ //if bloo is left of red
+                    red_x = red_x - 10; //move right too
+                   }
+                  else{
+                    red_x = red_x + 10; //move left
+                   }
+                }
+           }
+       }
+
+        if(( bloo_y)>(20)){
+            if(e.keyCode == 38) /*up*/{
+                bloo_y =  bloo_y - 10;
+                randnum = Math.floor((Math.random() * 3) + 1);
+                if ((( red_y )<(canvas.height-40)) && (( red_y)>(20))){
+                  if (randnum == 1){ //if bloo is higher then red
+                    red_y = red_y - 10;
+                  }
+                  else{
+                    red_y = red_y + 10;
+                  }
+
+               }
+           }
+       }
+
+        // redy = Math.floor((Math.random() * 100) + 1);
+        // redy = Math.floor((Math.random() * 100) + 1);
+        clearCanvas();
         drawMain();
         yellow_supplies();
         red_triangle();
-        step();
+        blue_bloo();
+
       }
+
 
     //the canvas clears
     function clearCanvas() {
@@ -201,13 +235,14 @@ window.onload = function()
     //draws the borders
     function drawMain()
         {
-            ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
-            ctx.strokeStyle = 'black'; // The border will also be black
+          ctx.lineWidth = 2; // Our border will have a thickness of 2 pixels
+          ctx.strokeStyle = 'black'; // The border will also be black
 
-            // The border is drawn on the outside of the rectangle, so we'll
-            // need to move it a bit to the right and up. Also, we'll need
-            // to leave a 20 pixels space on the top to draw the interface.
-            ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
+          // The border is drawn on the outside of the rectangle, so we'll
+          // need to move it a bit to the right and up. Also, we'll need
+          // to leave a 20 pixels space on the top to draw the interface.
+          ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
+
         }
 
-  }
+}
