@@ -29,7 +29,7 @@ window.onload = function()
 
     var steps;
     steps = 100;
-    $( "#scorenum" ).text(steps);
+    $( "#scorenum").text(steps);
 
     var currentKey;          //records the current key pressed
     var TimerWalk;          //timer handle
@@ -41,6 +41,8 @@ window.onload = function()
      $('#bloo').addClass('front-stand');
 
  });
+
+ }
 
 
 
