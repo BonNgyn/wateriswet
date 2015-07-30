@@ -81,7 +81,7 @@ window.onload = function()
         bloo_image = new Image();
         bloo_image.src = 'https://wiki.guildwars2.com/images/8/8c/Blue_Dot.png';
         bloo_image.onload = function() {
-            ctx.drawImage(bloo_image,  bloo_x ,bloo_y)
+            ctx.drawImage(bloo_image, bloo_x ,bloo_y)
         }
     }
 
@@ -128,8 +128,8 @@ window.onload = function()
     //checks if blue and yellow collide
 
     function blue_yellow_collision(){
-        if ( (( bloo_x - 16)< yellow_x) && (yellow_x < ( bloo_x   + 16) ) ) {
-            if( (( bloo_y - 16) <yellow_y) && (yellow_y< ( bloo_y  + 16)) ){
+        if ( (( bloo_x - 20)< yellow_x) && (yellow_x < ( bloo_x   + 20) ) ) {
+            if( (( bloo_y - 20) <yellow_y) && (yellow_y< ( bloo_y  + 20)) ){
                 // console.log("collided");
                 steps = steps + 20;
                 collected = collected + 1;
@@ -137,8 +137,8 @@ window.onload = function()
                 yellow_y = Math.floor((Math.random() * (canvas.height - 80)) + 50);
             }
         }
-        if ( ((yellow_x -16 )< bloo_x   )&& (bloo_x   < (yellow_x + 16)) ){
-            if (((yellow_y -16) <  bloo_y ) &&  ( bloo_y   < (yellow_y + 16)) ){
+        if ( ((yellow_x -20 )< bloo_x   )&& (bloo_x   < (yellow_x + 20)) ){
+            if (((yellow_y -20) <  bloo_y ) &&  ( bloo_y   < (yellow_y + 20)) ){
                 // console.log("collideded");
                 steps = steps + 20;
                 collected = collected + 1;
@@ -160,32 +160,44 @@ window.onload = function()
         if(( bloo_y )<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
                 bloo_y =  bloo_y + 10;
-                randnum = Math.floor((Math.random() * 3) + 1);
+                randnum = Math.floor((Math.random() * 4) + 1);
                 if (( red_y <(canvas.height-40)) && ( red_y>20)) {
                   if (randnum == 1) { //if bloo is higher then red
-                    red_y = red_y - 10;
+                    red_y = red_y - Math.floor((Math.random() * 40) + 1);;
                   }
                   else{
-                    red_y = red_y + 10;
+                    red_y = red_y + Math.floor((Math.random() * 40) + 1);;
                   }
                 }
-            
+                else if ( red_y > (canvas.height-40) ) {
+                  red_y =  red_y - 20;
+                }
+                else if ( red_y < 20 ) {
+                  red_y =  red_y + 20;
+                }
           }
       }
 
         if(( bloo_x )>(0)){
             if(e.keyCode == 37) /*left*/{
                bloo_x =  bloo_x- 10;
-               randnum = Math.floor((Math.random() * 3) + 1);
+               randnum = Math.floor((Math.random() * 4) + 1);
                if ((( red_x )>(0)) && (( red_x )<(canvas.width-40))){
                  if (randnum == 1){ //if bloo is left of red
-                   red_x = red_x - 10; // red move left with bloo
+                   red_x = red_x + Math.floor((Math.random() * 40) + 1);; // red move left with bloo
                   }
                  else{
-                   red_x = red_x + 10; //move right towards
+                   red_x = red_x - Math.floor((Math.random() * 40) + 1);; //move right towards
                   }
-
                 }
+               else if (( red_x )<(0)) {
+                  red_x =  red_x + 20;
+                }
+               else if (( red_x )>(canvas.width-40)){
+                  red_x =  red_x - 20;
+                }
+
+
               }
           }
 
@@ -193,32 +205,47 @@ window.onload = function()
             if(e.keyCode == 39) /*right*/{
                 bloo_x =  bloo_x + 10;
                 if ((( red_x )>(0)) && (( red_x )<(canvas.width-40))){
-                  randnum = Math.floor((Math.random() * 3) + 1);
+                  randnum = Math.floor((Math.random() * 4) + 1);
                   if (randnum == 1){ //if bloo is left of red
-                    red_x = red_x - 10; //move right too
+                    red_x = red_x - Math.floor((Math.random() * 40) + 1); //move right too
                    }
                   else{
-                    red_x = red_x + 10; //move left
+                    red_x = red_x + Math.floor((Math.random() * 40) + 1); //move left
                    }
-                }
+                 }
+                 else if (( red_x )<(0)) {
+                   red_x =  red_x + 20;
+                 }
+                 else if (( red_x )>(canvas.width-40)){
+                   red_x =  red_x - 20;
+                 }
+
            }
        }
 
         if(( bloo_y)>(20)){
             if(e.keyCode == 38) /*up*/{
                 bloo_y =  bloo_y - 10;
-                randnum = Math.floor((Math.random() * 3) + 1);
+                randnum = Math.floor((Math.random() * 4) + 1);
                 if ((( red_y )<(canvas.height-40)) && (( red_y)>(20))){
                   if (randnum == 1){ //if bloo is higher then red
-                    red_y = red_y - 10;
+                    red_y = red_y + Math.floor((Math.random() * 40) + 1);
                   }
                   else{
-                    red_y = red_y + 10;
+                    red_y = red_y - Math.floor((Math.random() * 40) + 1);
                   }
+                }
+                else if ( red_y >(canvas.height-40)) {
+                  red_y =  red_y - 20;
+                 }
+                else if ( red_y<20){
+                  red_y =  red_y + 20;
+                 }
 
-               }
+
            }
-       }
+
+         }
 
         // redy = Math.floor((Math.random() * 100) + 1);
         // redy = Math.floor((Math.random() * 100) + 1);
