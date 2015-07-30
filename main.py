@@ -9,6 +9,7 @@ import json
 
 class Player(ndb.Model):
     name = ndb.StringProperty(required=True) 
+    collectednum = ndb.StringProperty(required=True)
     date_created = ndb.DateTimeProperty(auto_now_add=True)      
 
 class MainHandler(webapp2.RequestHandler):
@@ -26,28 +27,26 @@ class GameHandler(webapp2.RequestHandler):
 class CreatePlayer(webapp2.RequestHandler):
     def post(self):
         name = self.request.get('player')
+        collectednum = self.request.get('collectednum')
         date = datetime.datetime.now()
-        player = Player(name=name)
-        player.name = name
+        player = Player(name=name, collectednum = collectednum)
         player.date_created = date
         player.put()
-        self.response.write('<a href="/highscore">High Scores</a>')
+        template = jinja_environment.get_template('templates/highscore.html')
+        self.response.write(template.render())
+
 
 class EndHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/end.html')
         collectednum = self.request.get('collectednum')
         template_vars = {'collectednum': collectednum}
-
         self.response.write(template.render((template_vars)))
 
 class HighScoreHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/highscore.html')
-        player = self.request.get('player')
-        collectednum = self.request.get('collectednum')
-        template_vars = {'collectednum': collectednum, 'player': player}
-        self.response.write(template.render((template_vars)))
+        self.response.write(template.render())
 
 
 jinja_environment = jinja2.Environment(loader=
