@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-application: attackondots
-=======
-application: attackondotsdos
->>>>>>> bf351ff3973c55f3a949da5fa0b648577aceb6fc
+application: wateriswet
 version: 1
 runtime: python27
 api_version: 1
