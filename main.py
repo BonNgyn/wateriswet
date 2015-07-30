@@ -17,6 +17,10 @@ class EndHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/end.html')
         self.response.write(template.render({}))
+        template_var = {{"collectednum": collectednum}}
+        self.response.write(template.render({ collectednum }))
+
+
 
 
 jinja_environment = jinja2.Environment(loader=

@@ -57,8 +57,10 @@ window.onload = function()
     $(document).keydown(function(e){
        steps = steps -1;
        $( "#scorenum" ).text(steps);
+
        $("#collectednum").text (collected);
       //  console.log(steps);
+
        if (steps <= 0){
          console.log('gameover');
          window.location.href = "/end";
@@ -112,18 +114,18 @@ window.onload = function()
       if ( (( bloo_x - 16)< red_x) && (red_x < ( bloo_x  + 16) ) ) {
           if( (( bloo_y - 16 ) <red_y) && (red_y< ( bloo_y + 16)) ){
           window.location.href = "/end";
-          $("#collectednum").text (collected);
+          $("#collectednumb").text(collected);
 
         }
       }
-
       if( ( (red_x - 16)< bloo_x  )&& (  bloo_x < (red_x + 16) )){
         if (((red_y -16) < bloo_y ) &&  ( bloo_y < (red_y + 16))){
           window.location.href = "/end";
-          $("#collectednum").text (collected);
+          $("#collectednumb").text(collected);
         }
       }
     }
+
 
     //checks if blue and yellow collide
 
@@ -154,9 +156,8 @@ window.onload = function()
  //Hard coding the red_triangle
 
 
-
     //Function for Bloo to move
-    function doKeyDown(e) {
+     function doKeyDown(e) {
         if(( bloo_y )<(canvas.height-40)){
             if(e.keyCode == 40) /*down*/{
                 bloo_y =  bloo_y + 10;
@@ -200,6 +201,7 @@ window.onload = function()
 
               }
           }
+
 
         if(( bloo_x )<(canvas.width-40)){
             if(e.keyCode == 39) /*right*/{
