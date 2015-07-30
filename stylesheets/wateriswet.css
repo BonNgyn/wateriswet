@@ -26,6 +26,12 @@ h1{
 
 }
 
+.hs{
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin-left: 49%;
+
+}
+
 a:link {
     text-decoration: none;
   }
@@ -140,6 +146,9 @@ a:visited {
    flex-wrap: wrap;
    align-items: center;
    min-width: 100%;
+
+//class user
+//name_person
 
 
  }

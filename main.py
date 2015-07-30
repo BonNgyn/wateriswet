@@ -1,7 +1,13 @@
-
+from google.appengine.ext import ndb
+import datetime
 import webapp2
 import jinja2
 import os
+
+
+class Users(ndb.Model):
+    name = ndb.StringProperty(required = True)
+    created_date = ndb.DateTimeProperty(required = True)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -22,6 +28,14 @@ class EndHandler(webapp2.RequestHandler):
         template_vars = {'collectednum': collectednum}
         self.response.write(template.render((template_vars)))
 
+class AddHighscoreHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('templates/highscore.html')
+        name = self.request.get('name')
+        template_vars = {'name': name}
+        self.response.write(template.render((template_vars)))
+
+
 
 jinja_environment = jinja2.Environment(loader=
 jinja2.FileSystemLoader(os.path.dirname(__file__)))
@@ -29,5 +43,6 @@ jinja2.FileSystemLoader(os.path.dirname(__file__)))
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/game', GameHandler),
-    ('/end', EndHandler)
+    ('/end', EndHandler),
+    ('/addhighscore', AddHighscoreHandler)
 ], debug=True)

@@ -11,13 +11,20 @@
 
 	<body>
     <div class = "endpage">
-
       <div class ="gameOverMessage">
         game over
 				<div>
 					Supplies Collected: {{ collectednum }}
+					<div>
+						<form action="/addhighscore.html" method="get">
+							Please Enter Your Name:</br>
+							<input type="text" name="name"></br>
+							<button type="submit" value="Submit">
+							<a href="/addhighscore">Submit</button></a>
+						</form>
 				</div>
-      </div>
+			</div>
+    </div>
 
       <div class="bottomMessages">
 
