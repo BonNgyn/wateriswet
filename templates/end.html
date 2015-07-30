@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>WATERISWET</title>
+  <head>
+    <title>WATERISWET</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/wateriswet.css">
-		<script src = '/js/wateriswet.js' type = 'text/javascript'></script>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic,300' rel='stylesheet' type='text/css'>
-	</head>
+    <script src = '/js/wateriswet.js' type = 'text/javascript'></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic,300' rel='stylesheet' type='text/css'>
+  </head>
 
-	<body>
+  <body>
     <div class = "endpage">
 
       <div class ="gameOverMessage">
         game over
-				<div>
-					<!-- Supplies Collected: {{ collectednum }} -->
-				</div>
+<<<<<<< HEAD
+        <div>
+          Supplies Collected: {{ collectednum }}
+        </div>
         <form method='GET' action='/highscore'>
           <div id='name'>
             <input type='text' name='player'/>
           </div>
           <input type='submit'>Submit</input>
         </form>
+=======
+				<div>
+					Supplies Collected: {{ collectednum }}
+				</div>
+>>>>>>> eab48d590e5f565f956ef7c512272f4afd30707b
       </div>
+
       <div class="bottomMessages">
 
         <div class= "mainPageMessage">

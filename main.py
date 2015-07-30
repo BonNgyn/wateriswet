@@ -1,8 +1,10 @@
+<<<<<<< HEAD
+=======
 
-#
+>>>>>>> eab48d590e5f565f956ef7c512272f4afd30707b
 import webapp2
-import os
 import jinja2
+import os
 import urllib2
 import datetime
 from google.appengine.ext import ndb
@@ -13,10 +15,11 @@ class Player(ndb.Model):
     name = ndb.StringProperty(required=True)
     date_created = ndb.DateTimeProperty(auto_now_add=True)
 
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/main.html')
-        self.response.write(template.render())
+        self.response.write(template.render({}))
 
 class GameHandler(webapp2.RequestHandler):
     def get(self):
@@ -32,19 +35,14 @@ class CreatePlayer(webapp2.RequestHandler):
 class EndHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/end.html')
+        collectednum = self.request.get('collectednum')
+        template_vars = {'collectednum': collectednum}
+        self.response.write(template.render((template_vars)))
         name = self.request.get('player')
         date = datetime.datetime.now()
         player = Player(name=name)
         player.date_created = date
         player.put()
-        self.response.write(template.render({}))
-        # template_var = {{"collectednum": collectednum}}
-        # self.response.write(template.render({ collectednum }))
-
-
-        collectednum = self.request.get('collectednum')
-        template_vars = {'collectednum': collectednum}
-        self.response.write(template.render((template_vars)))
 
 
 class HighScoreHandler(webapp2.RequestHandler):
