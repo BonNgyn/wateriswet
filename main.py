@@ -18,17 +18,10 @@ class GameHandler(webapp2.RequestHandler):
 class EndHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/end.html')
-<<<<<<< HEAD
-        self.response.write(template.render({}))
-        # template_var = {{"collectednum": collectednum}}
-        # self.response.write(template.render({ collectednum }))
-
-
-=======
         collectednum = self.request.get('collectednum')
         template_vars = {'collectednum': collectednum}
         self.response.write(template.render((template_vars)))
->>>>>>> f51501f5505ed69cf3c04361ed767274294be212
+
 
 
 jinja_environment = jinja2.Environment(loader=
