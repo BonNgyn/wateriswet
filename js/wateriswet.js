@@ -66,7 +66,6 @@ function setup() {
       }
 
       if (steps <= 0){
-        // console.log('gameover');
         window.location.href = "/end";
          }
        blue_yellow_collision();
