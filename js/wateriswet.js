@@ -73,7 +73,7 @@ function blue_bloo(ctx) {
 
 function yellow_supplies(ctx) {
     yellow_image = new Image();
-    yellow_image.src = "images/yellow_supplies.jpg";
+    yellow_image.src = "images/yellow_square.png";
     yellow_image.onload = function() {
         ctx.drawImage(yellow_image, yellow_x, yellow_y)
     }
