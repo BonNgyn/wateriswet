@@ -1,66 +1,45 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> eab48d590e5f565f956ef7c512272f4afd30707b
 import webapp2
-import jinja2
 import os
-import urllib2
+import jinja2
+import urllib2  
 import datetime
 from google.appengine.ext import ndb
 import logging
 import json
 
 class Player(ndb.Model):
-    name = ndb.StringProperty(required=True)
-    date_created = ndb.DateTimeProperty(auto_now_add=True)
-
+    name = ndb.StringProperty(required=True) 
+    date_created = ndb.DateTimeProperty(auto_now_add=True)      
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/main.html')
-        self.response.write(template.render({}))
+        self.response.write(template.render())
 
 class GameHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/game.html')
         collectednum = self.request.get('collectednum')
         template_vars = {'collectednum': collectednum}
-        self.response.write(template.render((template_vars)))
+        self.response.write(template.render((template_vars)))  
 
 class CreatePlayer(webapp2.RequestHandler):
     def post(self):
-        player = self.request.get('player')
+        name = self.request.get('player')
+        date = datetime.datetime.now()
+        player = Player(name=name)
+        player.name = name
+        player.date_created = date
+        player.put()
+        self.response.write('<a href="/highscore">High Scores</a>')
 
 class EndHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('templates/end.html')
-<<<<<<< HEAD
-=======
         collectednum = self.request.get('collectednum')
         template_vars = {'collectednum': collectednum}
-        self.response.write(template.render((template_vars)))
->>>>>>> eab48d590e5f565f956ef7c512272f4afd30707b
-        name = self.request.get('player')
-        date = datetime.datetime.now()
-        player = Player(name=name)
-        player.date_created = date
-        player.put()
-<<<<<<< HEAD
-        collectednum = self.request.get('collectednum')
-        template_vars = {'collectednum': collectednum}
-        self.response.write(template.render((template_vars)))
-=======
-        self.response.write(template.render({}))
-        # template_var = {{"collectednum": collectednum}}
-        # self.response.write(template.render({ collectednum }))
 
-
-        collectednum = self.request.get('collectednum')
-        template_vars = {'collectednum': collectednum}
         self.response.write(template.render((template_vars)))
-
->>>>>>> eab48d590e5f565f956ef7c512272f4afd30707b
 
 class HighScoreHandler(webapp2.RequestHandler):
     def get(self):
@@ -77,11 +56,7 @@ jinja2.FileSystemLoader(os.path.dirname(__file__)))
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/game', GameHandler),
-<<<<<<< HEAD
     ('/end', EndHandler),
-    ('/highscore', HighScoreHandler)
+    ('/highscore', HighScoreHandler),
+    ('/player', CreatePlayer)
 ], debug=True)
-=======
-    ('/end', EndHandler)
-], debug=True)
->>>>>>> eab48d590e5f565f956ef7c512272f4afd30707b
