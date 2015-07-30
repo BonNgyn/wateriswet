@@ -188,16 +188,16 @@ function redMove(){
           }
         }
      }
-     else if (( triangles[i].red_y )<(canvas.height-40)) {
+     if (( triangles[i].red_y )<(canvas.height-40)) {
         triangles[i].red_y =  triangles[i].red_y + 40;
       }
-     else if (( triangles[i].red_y )>(20)){
+     if (( triangles[i].red_y )>(20)){
         triangles[i].red_y = triangles[i].red_y - 40;
       }
-     else if (( triangles[i].red_x )<(0)) {
+     if (( triangles[i].red_x )<(0)) {
        triangles[i].red_x =  triangles[i].red_x + 40;
      }
-     else if (( triangles[i].red_x )>(canvas.width-40)){
+     if (( triangles[i].red_x )>(canvas.width-40)){
        triangles[i].red_x =  triangles[i].red_x - 40;
      }
   }
