@@ -14,11 +14,12 @@
 
       <div class ="gameOverMessage">
         game over
-        <div>
-          Supplies Collected: {{ collectednum }}
-        </div>
-
+        
         <form method='POST' action='/player'>
+          <div>
+          Supplies Collected: {{ collectednum }}
+          <input type='hidden' name='collectednum' value= '{{collectednum}}'>
+          </div>
           <div id='name'>
             <input type='text' name='player'/>
           </div>
