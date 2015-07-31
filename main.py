@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> eab48d590e5f565f956ef7c512272f4afd30707b
 import webapp2
 import jinja2
 import os
