@@ -97,7 +97,6 @@ function makeTriangles(num){
   return newtriangles;
 }
 
-
 // checks if blue and red collide
 
 function blue_red_collision(){ //removed  and y
@@ -253,4 +252,3 @@ function drawMain(ctx) {
       // need to move it a bit to the right and up. Also, we'll need
       // to leave a 20 pixels space on the top to draw the interface.
       ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
-}

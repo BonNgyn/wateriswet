@@ -13,19 +13,33 @@
     <div class = "endpage">
 
       <div class ="gameOverMessage">
+<<<<<<< HEAD
 				game over
         <div>
 					
           supplies collected: {{ collectednum }}
         </div>
         <form method='GET' action='/highscore'>
+=======
+        game over
+        
+        <form method='POST' action='/player'>
+          <div>
+          Supplies Collected: {{ collectednum }}
+          <input type='hidden' name='collectednum' value= '{{collectednum}}'>
+          </div>
+>>>>>>> 9ff3acde6696ae35d2a882bcd22aff3b8eae4dac
           <div id='name'>
             <input type='text' name='player'/>
           </div>
-          <input type='submit'>Submit</input>
+          <input type='submit'></input>
         </form>
+<<<<<<< HEAD
       </div>
+=======
+>>>>>>> 9ff3acde6696ae35d2a882bcd22aff3b8eae4dac
 
+      </div>
       <div class="bottomMessages">
 
         <div class= "mainPageMessage">
