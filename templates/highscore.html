@@ -11,7 +11,13 @@
 
 	<body>
 
-		<h1> YOU are the BEST!</h1>
+		<h1>HIGH SCORES</h1>
+		{%for player in players%}
+		<li>{{player.collectednum}} {{player.name}} {{player.date_created}}</li>
+		{% endfor %}
 
+		<div class = 'mainpage_2'>
+			<a href='/'>mainpage</a>
+		</div>
 	</body>
 </html>
