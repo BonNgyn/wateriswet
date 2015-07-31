@@ -10,14 +10,22 @@
 	</head>
 
 	<body>
-
-		<h1>HIGH SCORES</h1>
-		{%for player in players%}
-		<li>{{player.collectednum}} {{player.name}} {{player.date_created}}</li>
-		{% endfor %}
-
-		<div class = 'mainpage_2'>
-			<a href='/'>mainpage</a>
+	<div id="wrapper">
+		<div id="header">
+			<h2 id='high'>HIGH SCORES</h2>
 		</div>
+		<div id="content">
+			<div>
+			{%for player in players%}
+			<li>{{player.collectednum}} {{player.name}} {{player.date_created}}</li>
+			{% endfor %}
+			</div>
+		</div>
+		<div id="footer">	
+			<div>
+				<a href='/'>MAIN PAGE</a>
+			</div>
+		</div>
+	</div>	
 	</body>
 </html>

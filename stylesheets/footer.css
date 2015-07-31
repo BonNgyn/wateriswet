@@ -1,93 +1,161 @@
 /*This is the css file for the bottom four links (instructions, about us, high score)*/
 a:link {
-    text-decoration: none;
-  }
-
+	text-decoration: none;
+}
 
 a:visited {
-    text-decoration: none;
-    color: black;
+	text-decoration: none;
+	color: black;
 }
+
 /*css for about us*/
 body{
-  font-family: 'Open Sans Condensed', sans-serif;
+	font-family: 'Open Sans Condensed', sans-serif;
+	height: 100%
+	padding: 0;
+	margin: 0;
 }
 
-/*.group_1{
-  width: 200px;
-  -webkit-transform: rotate(90deg);
-}*/
-.group {
-  background-image: url("../images/group_2.jpg");
-  background-repeat: no-repeat;
-  height: 100vh;
-  background-size: cover;
-  word-wrap: break-word;
-  text-align: center;
-  }
+#mainpage_about {
+   text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
 
-.teamname{
-    padding: 50px;
-    color: white;
-    font-size: 50px;
-  }
+h1{
+	text-align: center;
+	font-family: 'Open Sans Condensed', sans-serif;
+	margin-top: 300px;
+}
+
+#high {
+	text-align: center;
+	font-family: 'Open Sans Condensed', sans-serif;
+	padding: 1%;
+	font-size: 2em;
+}
+
+li {
+	text-align: center;
+	list-style-type: none;
+	padding-top: 10px;
+	/*padding-bottom: 10px;*/
+}	
+.group {
+	/*background-image: url("../images/group_2.jpg");*/
+	background-repeat: no-repeat;
+	height: 100vh;
+	background-size: cover;
+	text-align: center;
+	background-color: black;
+}
 
 .group_2{
-  height: 100%;
+	height: 100%;
 
+/*background-color: black;*/
+/*background-image: url("../images/group_2.jpg");*/
+}
+.teamname{
+	margin-top: -400px;
+	color: white;
+	font-size: 70px;
 }
 
 .bios{
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .people{
-  width:33%;
-  padding:1%;
-  margin: 1%;
-  margin-bottom: 5%;
-  text-align: center;
-  border-radius: 5%;
+	width:33%;
+	padding:1%;
+	margin: 1%;
+	margin-bottom: 5%;
+	text-align: center;
+	border-radius: 5%;
 
 }
 
 .image{
-  width: 300px;
+	width: 300px;
 }
 
 .name{
-  font-size: 25px;
+	font-size: 25px;
 }
 
 .bio{
-  font-size: 20px;
+	font-size: 20px;
 }
 
+.thanks{
+	font-size: 40px;
+	text-align: center;
+}
 
+.thanksmessage{
+	font-size: 25px;
+	text-align: center;
+}
 
 /*instruct html css*/
 .instructions{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  margin-left: 250px;
-  margin-right: 250px;
-  margin-top: 150px;
-  font-size: 25px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
-  ul{
-    list-style: none;
-  }
+ul {
+	list-style: none;
+	list-style-type: none;
+	font-size: 25px;
+	margin-left: 250px;
+	margin-right: 250px;
+	margin-top: 10px;
+}
 
-  .mainpage{
-    align-self: center;
-  }
+#goal {
+	font-weight: bold;
+}
 
-  .mainpage_2{
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 50px;
-  }
+.mainpage{
+	align-self: center;
+}
+
+#wrapper {
+	min-height:100%;
+	position: relative;
+}
+
+#header {
+	background:#ededed;
+	padding:3px;
+}
+
+#content {
+	padding-bottom:100px; 
+	height: 100%;/* Height of the footer element */
+}
+
+#footer2 {
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:60px;   /* Height of the footer */
+	background:#6cf;
+	text-align: center;
+	font-size: 30px;
+}
+
+#footer {
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:60px;   /* Height of the footer */
+	background:#F4FA58;
+	text-align: center;
+	font-size: 30px;
+}
