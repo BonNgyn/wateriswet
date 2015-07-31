@@ -53,7 +53,7 @@ function setup() {
         $("#collectednum").text(collected);
 
         if (steps <= 0){
-          window.location.href = "/end?collectednum=" + collected;
+          window.location.href = "/end?collectednum=" + collected
         }
         blue_yellow_collision();
         blue_red_collision();
@@ -73,7 +73,7 @@ function blue_bloo(ctx) {
 
 function yellow_supplies(ctx) {
     yellow_image = new Image();
-    yellow_image.src = "images/yellow_square.png";
+    yellow_image.src = "/images/yellow_square.png";
     yellow_image.onload = function() {
         ctx.drawImage(yellow_image, yellow_x, yellow_y)
     }
@@ -97,21 +97,22 @@ function makeTriangles(num){
   return newtriangles;
 }
 
+
 // checks if blue and red collide
 
 function blue_red_collision(){ //removed  and y
   for (i in triangles){
     if ( (( bloo_x - 16)< triangles[i].red_x) && (triangles[i].red_x < ( bloo_x  + 16) ) ) {
         if( (( bloo_y - 16 ) < triangles[i].red_y) && (triangles[i].red_y< ( bloo_y + 16)) ){
-          window.location.href = "/end?collectednum=" + collected;
-          $("#collectednum").text(collected);
+          window.location.href = "/end?collectednum=" + collected
+          $("#collectednumb").text(collected);
         }
     }
     if( ( (triangles[i].red_x - 16)< bloo_x  )&& (  bloo_x < (triangles[i].red_x + 16) )){
       if (((triangles[i].red_y -16) < bloo_y ) &&  ( bloo_y < (triangles[i].red_y + 16))){
         console.log("collideded");
-        window.location.href = "/end?collectednum=" + collected;
-        $("#collectednum").text(collected);
+        window.location.href = "/end?collectednum=" + collected
+        $("#collectednumb").text(collected);
       }
     }
   }
@@ -252,3 +253,4 @@ function drawMain(ctx) {
       // need to move it a bit to the right and up. Also, we'll need
       // to leave a 20 pixels space on the top to draw the interface.
       ctx.strokeRect(2, 20, canvas.width - 4, canvas.height - 24);
+}
